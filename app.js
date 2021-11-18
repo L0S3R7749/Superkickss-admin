@@ -4,12 +4,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const dashboardRouter = require('./routes/dashboard');
-const accountRouter = require('./routes/accounts');
-const productRouter = require('./routes/products');
-const orderRouter = require('./routes/orders');
+require('dotenv').config();
+
+const homepageRouter = require('./components/homepage');
+const authRouter = require('./components/auth');
+const productRouter = require('./components/products');
+const orderRouter = require('./components/orders');
+
 
 const app = express();
 
@@ -23,10 +24,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/dashboard',dashboardRouter);
-app.use('/accounts',accountRouter);
+app.use('/', homepageRouter);
+app.use('/auths', authRouter);
 app.use('/products',productRouter);
 app.use('/orders',orderRouter);
 
