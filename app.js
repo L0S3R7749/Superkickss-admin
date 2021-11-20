@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-require('dotenv').config();
+require('dotenv').config({path:'.env'});
 
 const homepageRouter = require('./components/homepage');
 const authRouter = require('./components/auth');
