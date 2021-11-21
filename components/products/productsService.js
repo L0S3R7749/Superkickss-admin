@@ -39,14 +39,23 @@ exports.find = (req,res)=>{
         const id = req.query.id;
 
         Product.findById(id)
-                
+                .then(data => {
+                    if (!data)
+                        res.status(400).send({message : "Not found product with id " + id});
+                    else
+                        res.send(data);
+                })
+                .catch(err=>{
+                    res.status(500).send({message:"Error retrieving product with id " + id});
+                })
+
     } else {
         Product.find()
             .then(data => {
                 res.send(data);
             })
             .catch(err=>{
-                res.status(500).send({message:err.message || "Error occurred while retriving product information!"});
+                res.status(500).send({message:err.message || "Error occurred while retrieving product information!"});
             });
     }
 }
