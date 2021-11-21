@@ -1,12 +1,16 @@
-/*module.exports.products = (req,res,next) => {
-    
-}*/
-
 const express = require('express');
+const axios = require('axios');
+
 const router = express.Router();
 
-router.get('/', (req,res)=>{
-    res.render('./homepage/index',{title: 'homepage', body: '../../views/products/products'});
+router.get('/', (req,res,next)=>{
+    axios.get('http://localhost:5000/products/api')
+        .then(function(response) {
+            res.render('./homepage/index',{title: 'homepage', body: '../../views/products/products', products: response.data});
+        })
+        .catch(err => {
+            res.send(err);
+        });
 })
 
 const services = require('./productsService');
