@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 
-require('dotenv').config({path:'.env'});
+require('dotenv').config();
 
 const homepageRouter = require('./components/homepage');
 const authRouter = require('./components/auth');
