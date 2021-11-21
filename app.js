@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose')
 
 require('dotenv').config();
 
@@ -44,5 +45,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// connect to database
+mongoose.connect(
+  process.env.DB_CONNECT,
+  { useUnifiedTopology: true, useNewUrlParser: true },
+  () => console.log("DB Connected")
+);
 
 module.exports = app;
