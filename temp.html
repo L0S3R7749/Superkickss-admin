@@ -13,6 +13,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="public/form-style/css/addform.css">
 
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
 </head>
 
 <body>
@@ -30,9 +32,9 @@
                                     <div class="col-lg-6">
                                         <div class="col-lg-12 row mb-3">
                                             <div class="form-group">
-                                                <label for="form_lastname">Product Name <span
+                                                <label for="form_productname">Product Name <span
                                                         class="require">*</span></label>
-                                                <input id="form_lastname" type="text" name="surname"
+                                                <input id="form_productname" type="text" name="productname"
                                                     class="form-control" placeholder="Enter product name"
                                                     required="required" data-error="Lastname is required.">
                                             </div>
@@ -40,18 +42,18 @@
                                         <div class="col-lg-12 row mb-3">
                                             <div class="col-md-6 mb-3">
                                                 <div class="form-group">
-                                                    <label for="form_email">Brand <span class="require">*</span></label>
-                                                    <input id="form_email" type="email" name="email"
-                                                        class="form-control" placeholder="Enter brand"
-                                                        required="required" data-error="Valid email is required.">
+                                                    <label for="form_brand">Brand <span class="require">*</span></label>
+                                                    <input id="form_brand" type="text" name="brand" class="form-control"
+                                                        placeholder="Enter brand" required="required"
+                                                        data-error="Valid email is required.">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <div class="form-group">
-                                                    <label for="form_need">Price <span class="require">*</span></label>
-                                                    <input id="form_need" type="price" name="price" class="form-control"
-                                                        placeholder="Enter price" required="required"
-                                                        data-error="Please specify your need.">
+                                                    <label for="form_price">Price <span class="require">*</span></label>
+                                                    <input id="form_price" type="price" name="price"
+                                                        class="form-control" placeholder="Enter price"
+                                                        required="required" data-error="Please specify your need.">
                                                 </div>
                                             </div>
                                         </div>
@@ -59,44 +61,50 @@
                                             <div class="form-group">
                                                 <label for="form_category">Category <span
                                                         class="require">*</span></label>
-                                                <div>
-                                                    <label for="form_category_gender" class="category_group">Gender:
-                                                        </span></label>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="genderGroup"
-                                                            id="maleRadio" value="male">
-                                                        <label class="form-check-label" for="maleRadio">Male</label>
+                                                <div id="form_category">
+                                                    <div>
+                                                        <label for="form_category_gender" class="category_group">Gender: </label>
+                                                        <div class="form-check form-check-inline"
+                                                            id="form_category_gender">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="genderGroup" id="maleRadio" value="male">
+                                                            <label class="form-check-label" for="maleRadio">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="genderGroup" id="femaleRadio" value="female">
+                                                            <label class="form-check-label"
+                                                                for="femaleRadio">Female</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="genderGroup" id="bothGenderRadio"
+                                                                value="bothGender">
+                                                            <label class="form-check-label"
+                                                                for="bothGenderRadio">Both</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="genderGroup"
-                                                            id="femaleRadio" value="female">
-                                                        <label class="form-check-label" for="femaleRadio">Female</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="genderGroup"
-                                                            id="bothGenderRadio" value="bothGender">
-                                                        <label class="form-check-label"
-                                                            for="bothGenderRadio">Both</label>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <label for="form_category_gender"
-                                                        class="category_group">Type</label>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="otherGroup"
-                                                            id="sportRadio" value="sport">
-                                                        <label class="form-check-label" for="sportRadio">Sport</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="otherGroup"
-                                                            id="casualRadio" value="casual">
-                                                        <label class="form-check-label" for="casualRadio">Casual</label>
-                                                    </div>
+                                                    <div>
+                                                        <label for="form_category_style"
+                                                            class="category_group">Type</label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="styleGroup" id="sportRadio" value="sport">
+                                                            <label class="form-check-label"
+                                                                for="sportRadio">Sport</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="styleGroup" id="casualRadio" value="casual">
+                                                            <label class="form-check-label"
+                                                                for="casualRadio">Casual</label>
+                                                        </div>
 
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="otherGroup"
-                                                            id="bothRadio" value="sport">
-                                                        <label class="form-check-label" for="bothRadio">Both</label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="styleGroup" id="bothRadio" value="sport">
+                                                            <label class="form-check-label" for="bothRadio">Both</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -104,7 +112,7 @@
                                         <div class="col-lg-12 row mb-3">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="form_email">Details<span
+                                                    <label for="form_detail">Details<span
                                                             class="require">*</span></label>
                                                     <div class="row">
                                                         <div class="col-md-5">
@@ -150,11 +158,12 @@
                                             <br>
                                             <div class="col-lg-12 img-list">
                                                 <div class="big-img">
+                                                    <form action="/target" class="dropzone big-img"></form>
                                                 </div>
                                                 <div class="img-items">
-                                                    <div class="single-img"></div>
-                                                    <div class="single-img"></div>
-                                                    <div class="single-img"></div>
+                                                    <div class="dropzone single-img"></div>
+                                                    <div class="dropzone single-img"></div>
+                                                    <div class="dropzone single-img"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,6 +183,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
         integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -191,6 +201,10 @@
             `;
         }
     </script>
+    <!-- <script>
+        // Dropzone has been added as a global variable.
+        const dropzone = new Dropzone("div.dropzone", { url: "/file/post" });
+      </script> -->
 </body>
 
 </html>
