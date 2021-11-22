@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 /* GET home controller */
-const controll = require('./productsController');
-
+const productController = require('./productsController');
+const detailController = require('./productDetailController');
 //router.get('/',controller.products);
-router.use('/',controll);
+router.use('/',productController);
+// router.use('/detail',detailController);
 
 module.exports = router;
