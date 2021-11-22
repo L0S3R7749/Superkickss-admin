@@ -95,3 +95,11 @@ exports.delete = (req,res)=>{
                 res.status(500).send({message:err.message || `Error occurred while delete product id ${id}`})
             });
 }
+
+exports.add_product = (req,res)=>{
+
+}
+
+exports.update_product = (req,res)=>{
+    
+}

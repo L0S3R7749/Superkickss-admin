@@ -1,10 +1,11 @@
 const express = require('express');
 const axios = require('axios');
+const apicaller = require('../../public/js/apiCaller');
 
 const router = express.Router();
 
 router.get('/', (req,res,next)=>{
-    axios.get('http://localhost:5000/products/api')
+    apicaller.callApi('products/api','GET',null)
         .then(function(response) {
             res.render('./homepage/index',{title: 'homepage', body: '../../views/products/products', products: response.data});
         })
