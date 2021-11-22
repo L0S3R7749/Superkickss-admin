@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', (req,res,next)=>{
     apicaller.callApi('products/api','GET',null)
         .then(function(response) {
-            res.render('./homepage/index',{title: 'homepage', body: '../../views/products/products', products: response.data});
+            res.render('./homepage/index',{title: 'Products', body: '../../views/products/products', products: response.data});
         })
         .catch(err => {
             res.send(err);
