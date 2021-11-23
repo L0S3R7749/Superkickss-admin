@@ -1,4 +1,5 @@
 //Product Item Model
+const { default: axios } = require('axios');
 const Product = require('../../models/schema/Product');
 
 //create and save new
@@ -26,7 +27,8 @@ exports.create = (req,res)=>{
     //save in dtb
     product.save(product)
             .then(data => {
-                res.send(data);
+                //res.send(data);
+                res.redirect('/addform')
             })
             .catch(err => {
                 res.status(500).send({message:err.message || "Some error occurred while creating a create operation"});
@@ -94,6 +96,16 @@ exports.delete = (req,res)=>{
             .catch(err => {
                 res.status(500).send({message:err.message || `Error occurred while delete product id ${id}`})
             });
+}
+
+exports.product_detail = (req,res)=>{
+    axios.get('http://localhost:5000/products/api', {params: {id: req.query.id}})
+        .then(function(productData) {
+            res.render('./homepage/index', {title: 'Product Detail', body: '../products/_detail', product: productData.data})
+        })
+        .catch(err=>{
+            res.send(err);
+        })
 }
 
 exports.add_product = (req,res)=>{
