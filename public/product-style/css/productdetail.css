@@ -36,15 +36,11 @@ ul, li {
     list-style-type: none;
 }
 
-.product-info{
-    /* font-size: 20px; */
-}
-
 .button{
     background-color: DodgerBlue;
     border: none;
     color: white;
-    padding: 3px 4px; 
+    padding: 3px 8px; 
     font-size: 16px;
     cursor: pointer;
     border-radius: 3px;
@@ -52,4 +48,14 @@ ul, li {
 
 .wrapper{
     margin-bottom: 50px;
+}
+
+.back{
+    width: 100px;
+    margin: 14px;
+}
+
+.back a{
+    color: #fff;
+    font-size: 20px;
 }
