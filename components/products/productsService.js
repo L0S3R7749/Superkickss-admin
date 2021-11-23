@@ -101,6 +101,7 @@ exports.delete = (req,res)=>{
 exports.product_detail = (req,res)=>{
     axios.get('http://localhost:5000/products/api', {params: {id: req.query.id}})
         .then(function(productData) {
+            console.log(productData.data);
             res.render('./homepage/index', {title: 'Product Detail', body: '../products/_detail', product: productData.data})
         })
         .catch(err=>{
