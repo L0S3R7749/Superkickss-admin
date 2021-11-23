@@ -1,26 +1,13 @@
-<!--!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../../public/table-style/images/icons/favicon.ico" />
-    <!--===============================================================================================-->
-    <!--link rel="stylesheet" type="text/css" href="../../public/table-style/vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <!--link rel="stylesheet" type="text/css" href="../../public/table-style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <!--link rel="stylesheet" type="text/css" href="../../public/table-style/vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <!--link rel="stylesheet" type="text/css" href="../../public/table-style/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <!--link rel="stylesheet" type="text/css" href="../../public/table-style/vendor/perfect-scrollbar/perfect-scrollbar.css">
-    <!--===============================================================================================-->
-    <!--link rel="stylesheet" type="text/css" href="../../public/table-style/css/util.css">
-    <--link rel="stylesheet" type="text/css" href="../../public/product-style/css/productdetail.css">
-    <1--title><%= title%></title>
-<!--/head>
-<body-->
+    <!-- <link rel="icon" type="image/png" href="../../public/table-style/images/icons/favicon.ico" /> -->
+    <link rel="stylesheet" type="text/css" href="product-style/css/productdetail.css">
+</head>
+<body>
     <div class="container wrapper">
         <div class="col-md-12 row">
             <div class="col-md-5">
@@ -30,60 +17,67 @@
             <div class="col-md-7 row">
                 <div class="col-md-6">
                     <div class="mt-2 product-info">
-                        <label for="product-name">Name<a href="">
+                        <label for="product-name">Name
+                            <button type="button" class="button">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a></label>
+                            </button>
+                        </label>
                         <div>
                             <input type="text" id="product-name" disabled="true" value=<%= product.name%>>
-
                         </div>
                     </div>
-                    <div class="mt-2 product-info" id="product-brand">
-                        <label for="product-brand">Brand<a href="">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a></label>
+                    <div class="product-info" id="product-brand">
+                        <label for="product-brand">Brand
+                            <button type="button" class="button">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button></label>
                         <div>
                             <input type="text" id="product-brand" disabled="true" value=<%= product.brand%>>
                         </div>
                     </div>
-                    <div class="mt-2 product-info" id="product-brand">
-                        <label for="product-desc">Description<a href="">
+                    <div class=" product-info" id="product-brand">
+                        <label for="product-desc">Description
+                            <button type="button" class="button">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a></label>
+                            </button>
+                        </label>
                         <div>
                             <!-- set desc in js file-->
                             <textarea id="product-desc" row="5" col="100" disabled="true"><%= product.description%></textarea>
                         </div>
                     </div>
-                    <div class="mt-2 product-info" id="product-price">
-                        <label for="product-price">Price<a href="">
+                    <div class=" product-info" id="product-price">
+                        <label for="product-price">Price
+                            <button type="button" class="button">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a></label>
+                            </button>
+                        </label>
                         <div>
                             <p>$<input type="text" id="product-price" disabled="true" value=<%= product.price%>></p>
-                            <div class="edit">
-
-                            </div>
                         </div>
                     </div>
-                    <div class="mt-2 product-info" id="product-SKU">
-                        <label for="product-SKU">SKU<a href="">
+                    <div class=" product-info" id="product-SKU">
+                        <label for="product-SKU">SKU
+                            <button type="button" class="button">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a></label>
+                            </button>
+                        </label>
                         <div>
                             <input type="text" id="product-SKU" disabled="true" value=<%= product.SKU%>>
-
                         </div>
                     </div>
-                    <div class="mt-2 product-tag" id="product-tag">
-                        <label for="product-tag">Tags<a href="">
+                    <div class=" product-tag" id="product-tag">
+                        <label for="product-tag">Tags
+                            <button  type="button" class="button">
+
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a></label>
+                            </button>
+                            </label>
                         <div>
                             <input type="text" id="product-tag" disabled="true" value=<%= product.tags[0].name%>>
                         </div>
                     </div>
-                    <div class="mt-2 product-category" id="product-category">
+                    <div class=" product-category" id="product-category">
                         <label for="product-category">Category</label>
                         <div>
                             <input type="text" id="product-category" disabled="true" value=<%= product.category%>>
@@ -91,7 +85,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="product-detail mt-2">
+                    <div class="product-detail ">
                         <label for="form_detail">Details<span class="require">*</span></label>
                         <div class="row mb-2">
                             <div class="col-md-5">
@@ -107,7 +101,7 @@
 
                             </div>
                             <div class="col-md-2 button-add">
-                                <button type="button" class="btn btn-primary btn-add-detail" onCLick="onAddDetail()"><i
+                                <button type="button" class="button" onCLick="onAddDetail()"><i
                                         class="fas fa-plus"></i></button>
                             </div>
                         </div>
@@ -125,8 +119,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 mt-5"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block "
-                    value="Add product">
+            <div class="col-md-12 mt-5 row justify-content-around align-content-center"> 
+                <button type="button" class="col-md-5 btn btn-primary gap-3">Update product</button>
+                <button type="button" class="col-md-5 btn btn-danger gap-3">Remove product</button>
             </div>
         </div>
 
@@ -147,5 +142,5 @@
             `;
         }
     </script>
-<!--/body>
-</html-->
+</body>
+</html>
