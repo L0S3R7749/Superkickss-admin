@@ -1,6 +1,6 @@
 <%for (let i = 0; i < product.details.length; i++) { %>
     <tr class="row">
-        <td class="col-5"><input class="col-12" type="text" disabled="true" value=<%= product.details[i].size%>></td>
+        <td class="col-5"><input class="col-12" type="text" value=<%= product.details[i].size%>></td>
         <td class="col-5"><input class="col-12" type="text" value=<%= product.details[i].quantity%>></td>
     </tr>
 <% } %>

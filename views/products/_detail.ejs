@@ -112,24 +112,14 @@
                     <button type="button" class="col-md-5 btn btn-danger gap-3">Remove product</button>
                 </div>
             </div>
+            <div class="col-md-12 mt-5 row justify-content-around align-content-center"> 
+                <button type="button" class="col-md-5 btn btn-primary gap-3">Update product</button>
+                <button id="rmvBtn" onClick="onRemoveProduct()" type="button" class="col-md-5 btn btn-danger gap-3" data-id="<%= product._id%>">Remove product</button>
+            </div>
+        </div>
         </form>
     </div>
-    <script>
-        function onAddDetail() {
-            const size = document.getElementById('size').value;
-            const quantity = document.getElementById('quantity').value;
-            // const detailValue=document.getElementById('detail-value');
-            const detailValue = document.querySelector('tbody');
-            detailValue.innerHTML += `
-                <tr class="row">
-                    <tr class="row">
-                        <td class="col-5"><input class="col-12" type="text" value="${size}"></td>
-                        <td class="col-5"><input class="col-12" type="text" value="${quantity}"></td>
-                    </tr>
-                </tr>
-            `;
-        }
-    </script>
+    <script src="js/productDetailScript.js"></script>
 </body>
 
 </html>

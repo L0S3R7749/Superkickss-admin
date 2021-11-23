@@ -1,5 +1,5 @@
 //Product Item Model
-const { default: axios } = require('axios');
+const apicaller = require('../../public/js/apiCaller');
 const Product = require('../../models/schema/Product');
 
 //create and save new
@@ -99,7 +99,7 @@ exports.delete = (req,res)=>{
 }
 
 exports.product_detail = (req,res)=>{
-    axios.get('http://localhost:5000/products/api', {params: {id: req.query.id}})
+    apicaller.callApi(`products/api?id=${req.query.id}`,'GET',null)
         .then(function(productData) {
             console.log(productData.data);
             res.render('./homepage/index', {title: 'Product Detail', body: '../products/_detail', product: productData.data})
