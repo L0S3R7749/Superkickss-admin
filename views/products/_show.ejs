@@ -1,6 +1,6 @@
 <%for (let i = 0; i < products.length; i++) { %>
     <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="block-4 text-center border" >
+        <div class="block-4 text-center border" style='height: 400px'>
             <div class="block-4-image">
                 <a href="/product-detail?id=<%= products[i]._id%>">
                     <img alt="images placeholder" style='width: 100%;height: 100%;' src=<%= products[i].images[0].url%>>
@@ -10,6 +10,11 @@
                 <h3><a href="/product-detail?id=<%= products[i]._id%>" class="text-primary" ><%= products[i].name%></a></h3>
             </div>
             <p class="text-primary font-weight-bold">$<%= products[i].price%></p>
+            <div class="buttons">
+                <button type="button" class="btn btn-primary">Update</button>
+                <!-- <button id="rmvBtn" onClick="onRemoveProduct()" type="button" class="" >Remove product</button> -->
+                <button id="rmvBtn" onClick="onRemoveProduct()" type="button" class="btn btn-danger" data-id="<%= products._id%>">Remove</button>
+            </div>
         </div>
     </div>
 <% } %>

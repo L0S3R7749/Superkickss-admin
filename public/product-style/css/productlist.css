@@ -1,119 +1,138 @@
-:root{
-    --primary-color: #674aee;
-  }
-  
-  @font-face {
-    font-family: Lato-Regular;
-    src: url('../fonts/Lato/Lato-Regular.ttf'); 
-  }
-  
-  @font-face {
-    font-family: Lato-Bold;
-    src: url('../fonts/Lato/Lato-Bold.ttf'); 
-  }
-  
-  * {
-      margin: 0px; 
-      padding: 0px; 
-      box-sizing: border-box;
-  }
-  
-  body, html {
-      height: 100%;
-      font-family: sans-serif;
-  }
-  
-  a {
-      margin: 0px;
-      transition: all 0.4s;
-      -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-  }
-  
-  a:focus {
-      outline: none !important;
-  }
-  
-  a:hover {
-      text-decoration: none;
-  }
-  
-  /* ------------------------------------ */
-  h1,h2,h3,h4,h5,h6 {margin: 0px;}
-  
-  p {margin: 0px;}
-  
-  ul, li {
-      margin: 0px;
-      list-style-type: none;
-  }
-  
-  
-  /* ------------------------------------ */
-  input {
-    display: block;
-      outline: none;
-      border: none !important;
-  }
-  
-  textarea {
-    display: block;
-    outline: none;
-  }
-  
-  textarea:focus, input:focus {
-    border-color: transparent !important;
-  }
-  
-  /* ------------------------------------ */
-  button {
-      outline: none !important;
-      border: none;
-      background: transparent;
-  }
-  
-  button:hover {
-      cursor: pointer;
-  }
-  
-  iframe {
-      border: none !important;
-  }
-  
-  
-  .block-4-text a:hover{
-    color:#ff0000 !important;
-  }
-  
-  .text-primary{
-    color: var(--primary-color) !important;
-  }
-  
-  .page-index ul{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    line-height: 30px;
-    color: var(--primary-color);
-  }
-  
-  .page-index ul li{
-    display: inline-block;
-    border: 1px solid var(--primary-color);
-    font-size: 18px;
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
-    border-radius: 50%;
-  }
-  
-  .page-index li:hover{
-    background-color: var(--primary-color);
-    color: #fff !important;
-  }
-  
-  .page-index li a:hover{
-    color: #fff !important;
-  }
+:root {
+  --primary-color: #674aee;
+}
+
+@font-face {
+  font-family: Lato-Regular;
+  src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url('../fonts/Lato/Lato-Bold.ttf');
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+a {
+  margin: 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+a:focus {
+  outline: none !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ------------------------------------ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+ul,
+li {
+  margin: 0px;
+  list-style-type: none;
+}
+
+
+/* ------------------------------------ */
+input {
+  display: block;
+  outline: none;
+  border: none !important;
+}
+
+textarea {
+  display: block;
+  outline: none;
+}
+
+textarea:focus,
+input:focus {
+  border-color: transparent !important;
+}
+
+/* ------------------------------------ */
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+iframe {
+  border: none !important;
+}
+
+
+.block-4-text a:hover {
+  color: #ff0000 !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.page-index ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  line-height: 30px;
+  color: var(--primary-color);
+}
+
+.page-index ul li {
+  display: inline-block;
+  border: 1px solid var(--primary-color);
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+
+.page-index li:hover {
+  background-color: var(--primary-color);
+  color: #fff !important;
+}
+
+.page-index li a:hover {
+  color: #fff !important;
+}
+
+.buttons{
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+}
