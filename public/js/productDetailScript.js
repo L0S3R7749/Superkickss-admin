@@ -13,18 +13,21 @@ function onAddDetail() {
     `;
 }
 
-function onRemoveProduct() {
-    const id = document.getElementById('rmvBtn').getAttribute('data-id');
-    console.log(id);
-    const request = {
-        "url":`http://localhost:5000/products/api/${id}`,
-        "method":"DELETE" 
-    }
-    if (window.confirm("Do you really want to this product?")) {
-        $.ajax(request).done(function(dataRes) {
-            alert('Remove product successfully!');
-        });
-        window.location.href='http://localhost:5000/products';
-        location.reload();
-    }
-} 
+if (window.location.pathname == "/products") {
+    $ondelete = $("div.buttons a.btn-danger");
+    $ondelete.click(function() {
+        const id = $(this).attr('data-id');
+
+        let request = {
+            "url": `http://localhost:5000/products/api/${id}`,
+            "method": "DELETE"
+        }
+
+        if (confirm("Do you really want to delete this product?")) {
+            $.ajax(request).done(function(response) {
+                alert("Remove product successfully!");
+                location.reload();
+            })
+        }
+    })
+}
