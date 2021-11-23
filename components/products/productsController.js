@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 const apicaller = require('../../public/js/apiCaller');
 
 const router = express.Router();
