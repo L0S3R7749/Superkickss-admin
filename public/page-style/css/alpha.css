@@ -3029,14 +3029,14 @@ a:hover {
 }
 
 /* clears the 'X' from Internet Explorer */
-.navbar .search input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-.navbar .search input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+/* .navbar .search input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+.navbar .search input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; } */
 
 /* clears the 'X' from Chrome */
-.navbar .search input[type="search"]::-webkit-search-decoration,
+/* .navbar .search input[type="search"]::-webkit-search-decoration,
 .navbar .search input[type="search"]::-webkit-search-cancel-button,
 .navbar .search input[type="search"]::-webkit-search-results-button,
-.navbar .search input[type="search"]::-webkit-search-results-decoration { display: none; }
+.navbar .search input[type="search"]::-webkit-search-results-decoration { display: none; } */
 
 
 /* Search Results */
@@ -3948,8 +3948,6 @@ input[type=datetime-local],
 input[type=datetime],
 input[type=email],
 input[type=number],
-input[type=password],
-input[type=search],
 input[type=tel],
 input[type=text],
 input[type=time],
@@ -3981,8 +3979,6 @@ input[type=datetime-local]:hover,
 input[type=datetime]:hover,
 input[type=email]:hover,
 input[type=number]:hover,
-input[type=password]:hover,
-input[type=search]:hover,
 input[type=tel]:hover,
 input[type=text]:hover,
 input[type=time]:hover,
@@ -3997,7 +3993,6 @@ input[type=datetime]:focus,
 input[type=email]:focus,
 input[type=number]:focus,
 input[type=password]:focus,
-input[type=search]:focus,
 input[type=tel]:focus,
 input[type=text]:focus,
 input[type=time]:focus,

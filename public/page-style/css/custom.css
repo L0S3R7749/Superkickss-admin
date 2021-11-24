@@ -1,1 +1,23 @@
 /* Your custom CSS code */
+*{
+    box-sizing: border-box;
+}
+.search-product{
+    position: relative;
+    display: flex;
+    border: 1px solid #674aee;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.search-product .search-label{
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background-color: #f4f4f4;
+    padding: 0px 7px;
+}
+
+.search-product input{
+    height: 25px;
+}
