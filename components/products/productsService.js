@@ -106,13 +106,9 @@ exports.product_detail = (req,res)=>{
         })
         .catch(err=>{
             res.send(err);
-        })
+        });
 }
 
 exports.add_product = (req,res)=>{
-
-}
-
-exports.update_product = (req,res)=>{
-    
+    res.render('./products/addform');
 }
