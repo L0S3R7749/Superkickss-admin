@@ -69,17 +69,25 @@
                             <!-- FIRST ITEM -->
                             <% if(current == 1) { %>
                             <li class="disabled">
-                                <a href="#"><span>First</span></a>
+                                <a href="#">
+                                    <span>FP</span>
+                                </a>
                             </li>
                             <li class="disabled">
-                                <a href="#"><span>&lt;</span></a>
+                                <a href="#">
+                                    <span>&lt;</span>
+                                </a>
                             </li>
                             <% } else { %>
                             <li>
-                                <a href="/products?page=1"><span>First</span></a>
+                                <a href="/products?page=1">
+                                    <span>FP</span>
+                                </a>
                             </li>
                             <li>
-                                <a href="/products?page=<%= Number(current)-Number(1)%>"><span>&lt;</span></a>
+                                <a href="/products?page=<%= Number(current)-Number(1)%>">
+                                    <span>&lt;</span>
+                                </a>
                             </li>
                             <% } %>
 
@@ -92,8 +100,8 @@
                                 <% } %>
                                 <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
                                 <% if(i == current) { %>
-                                <li class="active">
-                                    <a href="/products?page=<%= i %>">
+                                <li class="disabled">
+                                    <a href="#">
                                         <span><%= i %></span>
                                     </a>
                                 </li>
@@ -120,7 +128,7 @@
                                 </li>
                                 <li class="disabled">
                                     <a href="#">
-                                        <span>Last</span>
+                                        <span>LP</span>
                                     </a>
                                 </li>
                                 <% } else { %>
@@ -131,7 +139,7 @@
                                 </li>
                                 <li>
                                     <a href="/products?page=<%= pages %>">
-                                        Last
+                                        <span>LP</span>
                                     </a>
                                 </li>
                                 <% } %>
