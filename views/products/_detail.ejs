@@ -29,13 +29,13 @@
                         <div class="mt-2">
                             <label for="product-name">Name</label>
                             <div>
-                                <input type="text" id="product-name" value=<%= product.name%>>
+                                <input type="text" id="product-name" value="<%= product.name%>">
                             </div>
                         </div>
                         <div id="product-brand">
                             <label for="product-brand">Brand</label>
                             <div>
-                                <input type="text" id="product-brand" value=<%= product.brand%>>
+                                <input type="text" id="product-brand" value="<%= product.brand%>">
                             </div>
                         </div>
                         <div id="product-brand">
@@ -62,13 +62,13 @@
                         <div id="product-tag">
                             <label for="product-tag">Tags</label>
                             <div>
-                                <input type="text" id="product-tag" value="<%- include('_tags')%>">
+                                <input type="text" id="product-tag" disabled="true" value="<%- include('_tags')%>">
                             </div>
                         </div>
                         <div id="product-category">
                             <label for="product-category">Category</label>
                             <div>
-                                <input type="text" id="product-category" value=<%= product.category%>>
+                                <input type="text" id="product-category" value="<%= product.category%>">
                             </div>
                         </div>
                     </div>
