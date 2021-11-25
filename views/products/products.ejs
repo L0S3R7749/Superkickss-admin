@@ -68,56 +68,69 @@
 
                             <!-- FIRST ITEM -->
                             <% if(current == 1) { %>
-                            <li class="page-item disabled">
-                                <a class="page-link" href="/">First</a>
+                            <li class="disabled">
+                                <a href="#"><span>First</span></a>
+                            </li>
+                            <li class="disabled">
+                                <a href="#"><span>&lt;</span></a>
                             </li>
                             <% } else { %>
-                            <li class="page-item">
-                                <a class="page-link" href="/">First</a>
+                            <li>
+                                <a href="/products?page=1"><span>First</span></a>
+                            </li>
+                            <li>
+                                <a href="/products?page=<%= Number(current)-Number(1)%>"><span>&lt;</span></a>
                             </li>
                             <% } %>
 
                             <!-- ITEMS  -->
                             <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %>
-                                giá_trị_2.
                                 <% if(i !== 1) { %>
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#">...</a>
+                                <li class="disabled">
+                                    <a href="#"><span>...</span></a>
                                 </li>
                                 <% } %>
                                 <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
-                                bằng dấu `;` là oke rồi
                                 <% if(i == current) { %>
-                                <li class="page-item active">
-                                    <a class="page-link" href="/products/api/<%= i %>">
-                                        <%= i %>
+                                <li class="active">
+                                    <a href="/products?page=<%= i %>">
+                                        <span><%= i %></span>
                                     </a>
                                 </li>
                                 <% } else { %>
-                                <li class="page-item">
-                                    <a class="page-link" href="/products/api/<%= i %>">
-                                        <%= i %>
+                                <li >
+                                    <a href="/products?page=<%= i %>">
+                                        <span><%= i %></span>
                                     </a>
                                 </li>
                                 <% } %>
                                 <% if (i == Number(current) + 2 && i < pages) { %>
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#">...</a>
+                                <li class="disabled">
+                                    <a href="#"><span>...</span></a>
                                 </li>
                                 <% } %>
                                 <% } %>
 
                                 <!-- LAST ITEM -->
                                 <% if(current == pages) { %>
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#">
-                                        Last
+                                <li class="disabled">
+                                    <a href="#">
+                                        <span>&gt;</span>
+                                    </a>
+                                </li>
+                                <li class="disabled">
+                                    <a href="#">
+                                        <span>Last</span>
                                     </a>
                                 </li>
                                 <% } else { %>
-                                số 6
-                                <li class="page-item">
-                                    <a class="page-link" href="/products/api/<%= pages %>">
+                                <li class="disabled">
+                                    <a href="/products?page=<%= Number(current)+Number(1)%>">
+                                        <span>&gt;</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/products?page=<%= pages %>">
                                         Last
                                     </a>
                                 </li>
