@@ -43,6 +43,9 @@ const productSchema = new mongoose.Schema({
         priority: {
             type: Number,
             required: true,
+        },
+        cloudinary_id: {
+            type: String,
         }
     }],
     category: {
