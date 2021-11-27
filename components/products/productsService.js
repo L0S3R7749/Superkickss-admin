@@ -1,8 +1,83 @@
 //Product Item Model
 const apicaller = require('../../public/js/apiCaller');
 const Product = require('../../models/schema/Product');
+const cloudinary = require('../../middlewares/cloudinary');
 
 //create and save new
+exports.product_create_get = (req, res) => {
+    res.render("./products/addform", {
+        title: 'New product',
+        product: new Product()
+    });
+}
+
+exports.product_create_post = async (req, res) => {
+    if (!req.body) {
+        res.redirect('/create');
+        return;
+    }
+    const uploadSimple = async (req, res) => {
+        try {
+            const result = await cloudinary.uploader.upload(req.file.path); // must be a multiple uploader, but not now :))
+            return {
+                url: result.secure_url,
+                priority: 0,
+                cloudinary_id: result.public_id
+            };
+        } catch {
+            console.log('Failed to upload');
+            res.redirect('/create');
+            return;
+        }
+    }
+    
+    const result = await uploadSimple(req, res);
+    const details = [];
+    const tags = [];
+
+    // BUGS HERE
+    //
+    //
+    // if (req.body.size != undefined && req.body.quantity != undefined) {
+    //     details = req.body.size.map((x, i) => {
+    //         return { size: x, quantity: req.body.quantity[i]}
+    //     })
+    // }
+    // if (req.body.tag != undefined) {
+    //     tags = req.body.tag.map(x => {
+    //         return { tag: x }
+    //     })
+    // }
+
+    const product = new Product({
+        name: req.body.name,
+        brand: req.body.brand,
+        price: req.body.price,
+        description: req.body.description || "No description",
+        SKU: req.body.SKU,
+        details: details,
+        images: [result],  
+        category: req.body.category,
+        tags: tags,
+    });
+
+    try {
+        const newProduct = await product.save()
+        console.log(newProduct);
+        res.redirect(`products/${newProduct.id}`);
+    } catch (error) {
+        if (product.images != null) {
+            const destroyes = product.images.map(async (i) => {
+                await cloudinary.uploader.destroy(i.cloudinary_id);
+            });
+            Promise.all(destroyes)
+                .catch(err => console.log(err));
+        }
+        console.log('Failed to create new product');
+        res.redirect('/create');
+    }    
+}
+
 exports.create = (req, res) => {
     //validate req
     if (!req.body) {
