@@ -111,7 +111,7 @@ iframe {
   color: var(--primary-color);
 }
 
-.page-index ul li {
+.page-index ul li a {
   display: inline-block;
   border: 1px solid var(--primary-color);
   font-size: 18px;
@@ -121,18 +121,21 @@ iframe {
   border-radius: 50%;
 }
 
-.page-index li:hover {
+.page-index .active a,
+.page-index li a:hover {
   background-color: var(--primary-color);
   color: #fff !important;
 }
 
-.page-index li a:hover {
-  color: #fff !important;
-}
 
 .buttons{
   margin-top: 5px;
   display: flex;
   justify-content: space-around;
   padding: 10px 20px;
+}
+
+.pagination .special-page a{
+  width: 70px;
+  border-radius: 5px;
 }

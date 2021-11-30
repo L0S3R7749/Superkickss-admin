@@ -151,6 +151,7 @@ exports.product_detail = (req, res) => {
 /*exports.pagination = (req, res) => {
     let perPage=9;
     let page=req.params.page||1;
+    
     Product
       .find() 
       .skip((perPage * page) - perPage)

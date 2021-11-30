@@ -7,7 +7,12 @@ const router = express.Router();
 router.get('/', (req,res,next)=>{
     apicaller.callApi(`products/api?page=${req.query.page}`,'GET',null)
         .then(function(responseData) {
-            res.render('./homepage/index',{title: 'Products', body: '../products/products', products: responseData.data.products, current: responseData.data.current, pages: responseData.data.pages})
+            res.render('./homepage/index',{
+                title: 'Products', 
+                body: '../products/products', 
+                products: responseData.data.products, 
+                current: responseData.data.current, 
+                pages: responseData.data.pages})
         })
         .catch(err => {
             res.send(err);
