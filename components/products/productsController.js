@@ -4,7 +4,6 @@ const services = require('./productsService');
 const upload = require('../../middlewares/multer');
 
 const router = express.Router();
-const services = require('./productsService');
 
 router.get('/', (req,res,next)=>{
     apicaller.callApi(`products/paramsApi?page=${req.query.page}`,'GET',null)
