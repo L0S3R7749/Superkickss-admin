@@ -214,7 +214,3 @@ exports.list = (req, res) => {
             });
         });
 }
-
-exports.add_product = (req, res) => {
-    res.render('./products/addform');
-}
