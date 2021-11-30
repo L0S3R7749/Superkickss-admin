@@ -1,5 +1,7 @@
 const express = require('express');
 const apicaller = require('../../public/js/apiCaller');
+const services = require('./productsService');
+const upload = require('../../middlewares/multer');
 
 const router = express.Router();
 const services = require('./productsService');
@@ -50,6 +52,8 @@ router.get('/search', (req, res, next)=>{
             res.send(err);
         });
 })
+router.get('/create', services.product_create_get);
+router.post('/', upload.single("image"), services.product_create_post);
 
 router.post('/api', services.create);
 router.get('/api', services.find);
