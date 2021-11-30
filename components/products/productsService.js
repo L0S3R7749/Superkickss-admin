@@ -41,45 +41,28 @@ exports.create = (req, res) => {
 
 //retrieve and return all/single
 exports.find = (req, res) => {
-    if (req.query.page) {
-        let perPage=9;
-        let page=req.query.page||1;
-        Product.find() 
-            .skip((perPage * page) - perPage)
-            .limit(perPage)
-            .exec((err, products) => {
-                Product.countDocuments((err, count) => { 
-                    if (err) return next(err);
-                    res.send({products: products,
-                                current: page, pages: Math.ceil(count/perPage)});
-                });
-            });
-    } else {
-        if (req.query.id) {
-            const id = req.query.id;
+    if (req.query.id) {
+        const id = req.query.id;
 
-            Product.findById(id)
-                .then(data => {
-                    if (!data)
-                        res.status(400).send({message : "Not found product with id " + id});
-                    else
-                        res.send(data);
-                })
-                .catch(err=>{
-                    res.status(500).send({message:"Error retrieving product with id " + id});
-                })
-
-        }
-        else {
-            Product.find()
-                .then(data => {
+        Product.findById(id)
+            .then(data => {
+                if (!data)
+                    res.status(400).send({message : "Not found product with id " + id});
+                else
                     res.send(data);
-                })
-                .catch(err=>{
-                    res.status(500).send({message:err.message || "Error occurred while retrieving product information!"});
-                });
-        }
-        
+            })
+            .catch(err=>{
+                res.status(500).send({message:err.message || "Error retrieving product with id " + id});
+            });
+    }
+    else {
+        Product.find()
+            .then(data => {
+                res.send(data);
+            })
+            .catch(err=>{
+                res.status(500).send({message:err.message || "Error occurred while retrieving product information!"});
+            });
     }
 }
 
@@ -133,40 +116,29 @@ exports.delete = (req, res) => {
         });
 }
 
-exports.product_detail = (req, res) => {
-    apicaller.callApi(`products/api?id=${req.query.id}`, 'GET', null)
-        .then(function (productData) {
-            console.log(productData.data);
-            res.render('./homepage/index', {
-                title: 'Product Detail',
-                body: '../products/_detail',
-                product: productData.data
-            })
-        })
-        .catch(err => {
-            res.send(err);
+exports.list = (req, res) => {
+    let perPage=9;
+    let page= (!isNaN(req.query.page) && req.query.page > 0) ? req.query.page : 1;
+    console.log(page);
+    let myquery = {};
+    if (req.query.search) {
+        myquery.$or = [
+            {"name" : {$regex : req.query.search, $options : 'i'}},
+            {"description" : {$regex : req.query.search, $options : 'i'}},
+        ];
+    }
+    Product.find(myquery)
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .exec((err, products) => {
+            Product.find(myquery).countDocuments((err, count) => { 
+                if (err) return next(err);
+                console.log(count);
+                res.send({products: products,
+                            current: page, pages: Math.ceil(count/perPage)});
+            });
         });
 }
-
-/*exports.pagination = (req, res) => {
-    let perPage=9;
-    let page=req.params.page||1;
-    
-    Product
-      .find() 
-      .skip((perPage * page) - perPage)
-      .limit(perPage)
-      .exec((err, products) => {
-        Product.countDocuments((err, count) => { 
-          if (err) return next(err);
-          res.render('./homepage/index',{title: 'Products', body: '../products/products', products: responseData.data,
-          current: req.query.page, pages: Math.ceil(JSON.parse(responseData.data).length/9)})
-          .catch(err => {
-              res.send(err);
-          });
-        });
-      });
-}*/
 
 exports.add_product = (req, res) => {
     res.render('./products/addform');

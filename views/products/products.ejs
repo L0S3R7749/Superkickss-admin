@@ -7,9 +7,9 @@
     </div>
     <div class="row">
         <div class="col-md-7">
-            <form class="search-product" action="/products/search">
+            <form class="search-product" action="/products/search" method="GET">
                 <label class="search-label" for="search-form">Search</label>
-                <input type="search" id="search-form" class="" />
+                <input type="search" id="search-form" class="" name="search"/>
                 <button type="button" class="btn btn-primary">
                     <i class="fas fa-search"></i>
                 </button>
@@ -29,92 +29,35 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <div class="page-index">
-                <ul>
-                    <% if(pages > 0) { %>
-                    <nav class="mx-auto">
-                        <ul class="pagination" style="margin-top: 2rem;">
-
-                            <!-- FIRST ITEM -->
-                            <% if(current == 1) { %>
-                            <li class="disabled special-page">
-                                <a href="#">
-                                    <span>First</span>
-                                </a>
-                            </li>
-                            <li class="disabled">
-                                <a href="#">
-                                    <span>&lt;</span>
-                                </a>
-                            </li>
-                            <% } else { %>
-                            <li class="special-page">
-                                <a href="/products?page=1">
-                                    <span>First</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/products?page=<%= Number(current)-Number(1)%>">
-                                    <span>&lt;</span>
-                                </a>
-                            </li>
-                            <% } %>
-
-                            <!-- ITEMS  -->
-                            <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %>
-                            <% if(i !== 1) { %>
-                            <li class="disabled">
-                                <a href="#"><span>...</span></a>
-                            </li>
-                            <% } %>
-                            <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
-                            <% if(i == current) { %>
-                            <li class="disabled active">
-                                <a href="#">
-                                    <span><%= i %></span>
-                                </a>
-                            </li>
-                            <% } else { %>
-                            <li>
-                                <a href="/products?page=<%= i %>">
-                                    <span><%= i %></span>
-                                </a>
-                            </li>
-                            <% } %>
-                            <% if (i == Number(current) + 2 && i < pages) { %>
-                            <li class="disabled">
-                                <a href="#"><span>...</span></a>
-                            </li>
-                            <% } %>
-                            <% } %>
-
-                            <!-- LAST ITEM -->
-                            <% if(current == pages) { %>
-                            <li class="disabled">
-                                <a href="#">
-                                    <span>&gt;</span>
-                                </a>
-                            </li>
-                            <li class="disabled special-page">
-                                <a href="#">
-                                    <span>Last</span>
-                                </a>
-                            </li>
-                            <% } else { %>
-                            <li class="disabled">
-                                <a href="/products?page=<%= Number(current)+Number(1)%>">
-                                    <span>&gt;</span>
-                                </a>
-                            </li>
-                            <li class="special-page">
-                                <a href="/products?page=<%= pages %>">
-                                    <span>Last</span>
-                                </a>
-                            </li>
-                            <% } %>
-                        </ul>
-                    </nav>
-                    <% } %>
-                </ul>
+                <% if (pages > 0) { %>
+                    <ul class="pagination" style="margin-top: 2rem;">
+                      <% if (current == 1) { %>
+                      <li class="disabled special-page"><a>First</a></li>
+                      <% } else { %>
+                      <li class="special-page">
+                        <a href="<%=home%>page=1">First</a>
+                      </li>
+                      <% } %> <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %> <% if (i
+                      !== 1) { %>
+                      <li class="disabled"><a>...</a></li>
+                      <% } %> <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %> <% if (i
+                      == current) { %>
+                      <li class="active"><a><%= i %></a></li>
+                      <% } else { %>
+                      <li>
+                        <a href="<%=home%>page=<%= i %>"><%= i %></a>
+                      </li>
+                      <% } %> <% if (i == Number(current) + 4 && i < pages) { %>
+                      <li class="disabled special-page"><a>...</a></li>
+                      <% } %> <% } %> <% if (current == pages) { %>
+                      <li class="disabled special-page"><a>Last</a></li>
+                      <% } else { %>
+                      <li class="special-page">
+                        <a href="<%=home%>page=<%= pages %>">Last</a>
+                      </li>
+                      <% } %>
+                    </ul>
+                <% } %>
             </div>
         </div>
     </div>
