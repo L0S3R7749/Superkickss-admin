@@ -31,6 +31,9 @@ const userSchema = new mongoose.Schema({
         required: true,
         enum: ['admin', 'user'],
         default: 'user',
+    },
+    image: {
+        type: String,
     }
 });
 
