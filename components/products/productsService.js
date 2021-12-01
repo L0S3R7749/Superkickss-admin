@@ -13,7 +13,7 @@ exports.product_create_get = (req, res) => {
 
 exports.product_create_post = async (req, res) => {
     if (!req.body) {
-        res.redirect('/create');
+        res.redirect('/products/create');
         return;
     }
     const uploadSimple = async (req, res) => {
@@ -26,7 +26,7 @@ exports.product_create_post = async (req, res) => {
             };
         } catch {
             console.log('Failed to upload');
-            res.redirect('/create');
+            res.redirect('/products/create');
             return;
         }
     }
@@ -74,7 +74,7 @@ exports.product_create_post = async (req, res) => {
                 .catch(err => console.log(err));
         }
         console.log('Failed to create new product');
-        res.redirect('/create');
+        res.redirect('/products/create');
     }    
 }
 
