@@ -11,7 +11,6 @@ cloudinary.config({
 const cloudinaryUpload = {
   multiple: async (req, res, next) => {
     try {
-      console.log(req.files);
       let pictureFiles = req.files;
       // check exists
       if (!pictureFiles) 
@@ -41,11 +40,12 @@ const cloudinaryDelete = {
       let destroyResponses = await Promise.all(multipleDestroyPromise);
       res.locals.images = undefined
       res.status(200).json({
-        message: "Destroy completed"
+        message: "Destroy completed",
+        destroyed: destroyResponses
       })
     } catch (err) {
       res.status(500).json({
-        message: err.mwssage
+        message: err.message
       })
     }
   }
