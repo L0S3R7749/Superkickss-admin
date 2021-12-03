@@ -1,7 +1,7 @@
 //Product Item Model
 const apicaller = require('../../public/js/apiCaller');
 const Product = require('../../models/schema/Product');
-const cloudinary = require('../../middlewares/cloudinary');
+const { cloudinaryUpload, cloudinaryDelete } = require('../../middlewares/cloudinary');
 
 //create and save new
 exports.product_create_get = (req, res) => {
@@ -12,66 +12,65 @@ exports.product_create_get = (req, res) => {
 }
 
 exports.product_create_post = async (req, res) => {
-    if (!req.body) {
-        res.redirect('/products/create');
-        return;
-    }
-    const uploadSimple = async (req, res) => {
-        try {
-            const result = await cloudinary.uploader.upload(req.file.path); // must be a multiple uploader, but not now :))
-            return {
-                url: result.secure_url,
-                priority: 0,
-                cloudinary_id: result.public_id
-            };
-        } catch {
-            console.log('Failed to upload');
-            res.redirect('/products/create');
-            return;
-        }
-    }
-    
-    const result = await uploadSimple(req, res);
-    const details = [];
-    const tags = [];
-
-    // BUGS HERE
-    //
-    //
-    // if (req.body.size != undefined && req.body.quantity != undefined) {
-    //     details = req.body.size.map((x, i) => {
-    //         return { size: x, quantity: req.body.quantity[i]}
-    //     })
-    // }
-    // if (req.body.tag != undefined) {
-    //     tags = req.body.tag.map(x => {
-    //         return { tag: x }
-    //     })
-    // }
-
-    const product = new Product({
-        name: req.body.name,
-        brand: req.body.brand,
-        price: req.body.price,
-        description: req.body.description || "No description",
-        SKU: req.body.SKU,
-        details: details,
-        images: [result],  
-        category: req.body.category,
-        tags: tags,
-    });
-
     try {
+        if (!req.body) {
+            return res.redirect('/products/create');
+        }
+        
+        if (!res.locals.images) {
+            return res.redirect('/products/create');
+        }
+        const images = res.locals.images.map(image => {
+            return {
+                url: image.secure_url,
+                cloudinary_id: image.public_id
+            }
+        })
+        let details = []
+        if (typeof(req.body.size) === "string") {
+            details.push({ size: parseInt(req.body.size), quantity: parseInt(req.body.quantity) })
+        } else if (Array.isArray(req.body.size)) {
+            details = req.body.size.map((s, index) => {
+                return {
+                    size: parseInt(s),
+                    quantity: parseInt(req.body.quantity[index])
+                }
+            })
+        }
+        console.log(details);
+
+        let tags = [];
+        if (typeof(req.body.tag) === "string") {
+            tags.push({ name: req.body.tag })
+        } else if (Array.isArray(req.body.tag)) {
+            tags = req.body.tag.map((t) => {
+                return {
+                    name: t
+                }
+            })
+        }
+
+        const product = new Product({
+            name: req.body.name,
+            brand: req.body.brand,
+            price: parseInt(req.body.price),
+            description: req.body.description || "No description",
+            SKU: req.body.SKU,
+            details: details,
+            images: images,  
+            category: { gender: req.body.gender, type: req.body.type },
+            tags: tags,
+        });
         const newProduct = await product.save()
         console.log(newProduct);
-        res.redirect(`products/${newProduct.id}`);
+        res.redirect(`detail?id=${newProduct.id}`);
     } catch (error) {
-        if (product.images != null) {
-            const destroyes = product.images.map(async (i) => {
-                await cloudinary.uploader.destroy(i.cloudinary_id);
-            });
-            Promise.all(destroyes)
-                .catch(err => console.log(err));
+        if (res.locals.images != null) {
+            try {
+                await cloudinaryDelete.multiple(req, res, null);
+            } catch {
+                console.log('Failed to destroy image')
+            }
         }
         console.log('Failed to create new product');
         res.redirect('/products/create');
@@ -124,6 +123,7 @@ exports.find = (req, res) => {
                 if (!data)
                     res.status(400).send({message : "Not found product with id " + id});
                 else
+                    console.log(data);
                     res.send(data);
             })
             .catch(err=>{
@@ -214,3 +214,4 @@ exports.list = (req, res) => {
             });
         });
 }
+

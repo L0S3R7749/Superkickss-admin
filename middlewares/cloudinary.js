@@ -20,11 +20,9 @@ const cloudinaryUpload = {
       })
       let imageResponses = await Promise.all(multiplePicturePromise);
       res.locals.images = imageResponses; 
-      next()
+      next();
     } catch (err) {
-      res.status(500).json({
-        message:err.message,
-      })
+      next(err);
     }
   }
 }
@@ -39,14 +37,9 @@ const cloudinaryDelete = {
       })      
       let destroyResponses = await Promise.all(multipleDestroyPromise);
       res.locals.images = undefined
-      res.status(200).json({
-        message: "Destroy completed",
-        destroyed: destroyResponses
-      })
+      next();
     } catch (err) {
-      res.status(500).json({
-        message: err.message
-      })
+      next(err);
     }
   }
 }
