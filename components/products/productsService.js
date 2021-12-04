@@ -5,8 +5,9 @@ const { cloudinaryUpload, cloudinaryDelete } = require('../../middlewares/cloudi
 
 //create and save new
 exports.product_create_get = (req, res) => {
-    res.render("./products/addform", {
+    res.render("./homepage/index", {
         title: 'New product',
+        body: "../products/_form",
         product: new Product()
     });
 }
