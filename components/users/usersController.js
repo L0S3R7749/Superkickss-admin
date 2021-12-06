@@ -1,79 +1,24 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
 const apicaller = require("../../public/js/apiCaller");
 const upload = require("../../middlewares/multer");
 const passport = require("../../middlewares/passport");
 const checkAuth = require("../../middlewares/check-auth");
 const User = require("../../models/schema/User");
+const service = require("./usersService");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  let perPage = 20; // Number of users per page
-  let page = req.query.page || 1;
+// tested
+router.get("/", service.user_list_get);
 
-  User.find()
-    .skip(perPage * page - perPage)
-    .limit(perPage)
-    .exec((err, users) => {
-      User.countDocuments((err, count) => {
-        if (err) return next(err);
-        res.send(users);
-      });
-    });
-});
+router.get("/create", service.user_create_get);
 
-router.get("/:id", async (req, res, next) => {
-  try{
-    if (!req.params.id) return res.redirect('/');
+router.post("/", service.user_create_post);
 
-    const user = await User.find({ _id: req.params.id });
-    res.send(user);
-    
-  } catch (error) {
-    next(error);
-  }
-})
+router.get("/:id", service.user_detail_get);
 
-router.get('/create', (req, res) => {
-  res.send('Create user page');
-})
+router.get("/:id/edit", service.user_edit_get);
 
-router.post("/", (req, res, next) => {
-  try {
-    const {
-      fullname,
-      username,
-      password,
-      confirmPassword,
-      email,
-      phone
-    } = req.body;
-    if (password !== confirmPassword) {
-      req.flash('error', 'Confirm-password does not match!');
-      res.redirect('/');
-    } else {
-      const checkExist = findAdminUser({username, email, password})
-    }
-  } catch (error) {
-    next(error)
-  }
-})
-
-function findAdminUser({ username, email, phone }) {
-  return User.findOne({
-    $and: [
-      {
-        $or: [
-          { username: username},
-          { email: email},
-          { phoneNumber: phone},
-        ]
-      },
-      { userRight: 'admin' },
-    ]
-  });
-}
-
-
-
+router.put("/:id", service.user_edit_put);
 
 module.exports = router;
