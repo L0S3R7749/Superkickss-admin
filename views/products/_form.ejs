@@ -192,7 +192,7 @@
                                         <% if (product.tags) { %>
                                             <% product.tags.map(tag => { %>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-12 row">
                                                         <div class="form-group">
                                                             <input type="text" name="tag"
                                                                 class="form-control border" placeholder="Enter size"
@@ -213,7 +213,13 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <div class="preview-images"></div>
+                                            <div class="preview-images">
+                                                <% if (product.images) { %>
+                                                    <% product.images.map(image => { %>
+                                                        <img src="<%=image.url%>" width=300>
+                                                    <% }) %>
+                                                <% } %>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -239,6 +245,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
+        
         $(document).ready(function() {
             // Multiple images preview in browser - trungquandev.com
             let imagesPreview = function(input, placeToInsertImagePreview) {
@@ -296,7 +303,7 @@
             const placeInsertNode = document.querySelector('#tags');
             let node = `
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <input type="text" name="tag"
                                 class="form-control border" placeholder="Enter size"
