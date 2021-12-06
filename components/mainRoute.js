@@ -1,14 +1,19 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const homepageRouter = require('./homepage/index');
-const authRouter = require('./auth/index');
-const productRouter = require('./products/index');
-const orderRouter = require('./orders/index');
+const checkAuth = require("../middlewares/check-auth");
 
-router.use('/', homepageRouter);
-router.use('/auths', authRouter);
-router.use('/products',productRouter);
-router.use('/orders',orderRouter);
+const homepageRouter = require("./homepage/");
+const authRouter = require("./auth/");
+const productRouter = require("./products/");
+const orderRouter = require("./orders/");
+const userRouter = require("./users/");
+
+router.use("/auth", checkAuth.isNotAuthenticated, authRouter);
+router.use("/products", checkAuth.isAuthenticated, productRouter);
+router.use("/orders", checkAuth.isAuthenticated, orderRouter);
+router.use("/users", userRouter);
+// Dummy bug here, please locate this route LASTEST, it will match all route while redirecting.
+router.use("/", homepageRouter);
 
 module.exports = router;
