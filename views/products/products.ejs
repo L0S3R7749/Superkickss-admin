@@ -14,9 +14,6 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-
-
-
         </div>
         <div class="col-md-5">
             <a href="/products/create" class="btn btn-text-secondary float-right">CREATE A NEW
@@ -26,41 +23,7 @@
     <div class="row mb-5">
         <%- include('_show')%>
     </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <div class="page-index">
-                <% if (pages > 0) { %>
-                    <ul class="pagination" style="margin-top: 2rem;">
-                      <% if (current == 1) { %>
-                      <li class="disabled special-page"><a>First</a></li>
-                      <% } else { %>
-                      <li class="special-page">
-                        <a href="<%=home%>page=1">First</a>
-                      </li>
-                      <% } %> <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %> <% if (i
-                      !== 1) { %>
-                      <li class="disabled"><a>...</a></li>
-                      <% } %> <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %> <% if (i
-                      == current) { %>
-                      <li class="active"><a><%= i %></a></li>
-                      <% } else { %>
-                      <li>
-                        <a href="<%=home%>page=<%= i %>"><%= i %></a>
-                      </li>
-                      <% } %> <% if (i == Number(current) + 4 && i < pages) { %>
-                      <li class="disabled special-page"><a>...</a></li>
-                      <% } %> <% } %> <% if (current == pages) { %>
-                      <li class="disabled special-page"><a>Last</a></li>
-                      <% } else { %>
-                      <li class="special-page">
-                        <a href="<%=home%>page=<%= pages %>">Last</a>
-                      </li>
-                      <% } %>
-                    </ul>
-                <% } %>
-            </div>
-        </div>
-    </div>
+    <%- include('../partials/pagination')%>
 </div>
 </div>
 <!--/body-->
