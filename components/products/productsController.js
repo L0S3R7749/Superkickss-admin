@@ -30,7 +30,7 @@ router.get("/detail", (req, res, next) => {
     .then(function (productData) {
       res.render("./homepage/index", {
         title: "Product Detail",
-        body: "../products/_detail",
+        body: "../products/_form",
         product: productData.data,
       });
     })
