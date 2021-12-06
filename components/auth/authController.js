@@ -8,7 +8,9 @@ const router = express.Router();
 
 // Form dang nhap
 router.get('/login', checkAuth.isNotAuthenticated, (req, res) => {
-    res.render('./homepage/index', {title: 'Login', body: '../auth/login'});
+    res.render('./auth/login', {title: 'Login'
+        // ,body: '../auth/login'
+    });
 });
 
 router.post('/login', 
