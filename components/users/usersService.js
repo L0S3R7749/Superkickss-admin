@@ -15,6 +15,7 @@ exports.user_list_get = (req, res) => {
     .exec((err, users) => {
       console.log(users);
       User.find(myquery).countDocuments((err, count) => {
+        console.log(users);
         if (err) return next(err);
         res.send({
           users: users,
