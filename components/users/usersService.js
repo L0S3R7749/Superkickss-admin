@@ -5,7 +5,6 @@ exports.user_list_get = (req, res) => {
   let perPage = 5; // Number of users per page
   // let page = req.query.page || 1;
   let page= (!isNaN(req.query.page) && req.query.page > 0) ? req.query.page : 1;
-  console.log(page);
   let myquery = {};
   // if (req.query.uright) {
   //   myquery.userRight = "admin";
@@ -80,18 +79,19 @@ exports.user_create_post = async (req, res, next) => {
 
 exports.user_detail_get = async (req, res, next) => {
   try {
-    if (!req.params.id) return res.redirect("/");
-    const user = await User.find({ id: req.params.id });
+    if (!req.query.id) return res.redirect("/");
+    const id = req.query.id;
+    const user = await User.findById(id);
     res.send(user);
   } catch (error) {
-    next(error);
+    res.send(error);
   }
 }
 
 exports.user_edit_get = async (req, res, next) => {
   try {
     if (!req.params.id) return res.redirect("/");
-    const user = await User.find({ id: req.params.id });
+    const user = await User.find({ _id: req.params.id });
     res.send(user);
   } catch (error) {
     next(error);

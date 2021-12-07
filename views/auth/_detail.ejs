@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="col-md-12">
+    <form class="create-user-form">
+      <div class="row p-4">
+        <div class="col-md-4 col-sm-2 mb-5">
+          <h5 class="mb-3">Avatar</h5>
+          <div class="box mb-5"></div>
+        </div>
+        <div class="col-md-8">
+          <div class="col-md-12 row">
+            <div class="col-md-6">
+              <h5>Full name</h5>
+              <div><%=user.fullname%></div>
+            </div>
+            <div class="col-md-6">
+              <h5>Username</h5>
+              <div><%=user.username%></div>
+            </div>
+          </div>
+          <div class="col-md-12 row">
+            <div class="col-md-6">
+              <h5>Email</h5>
+              <div><%=user.email%></div>
+            </div>
+            <div class="col-md-6">
+              <h5>Phone number</h5>
+              <div><%=user.phoneNumber%></div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h5>Address</h5>
+            <div><%=user.address%></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mb-5 d-flex justify-content-center">
+        <a href="/users/edit?id=<%=user.id%>">Edit</a>
+      </div>
+    </form>
+  </div>
+</div>
