@@ -80,18 +80,19 @@ exports.user_create_post = async (req, res, next) => {
 
 exports.user_detail_get = async (req, res, next) => {
   try {
-    if (!req.params.id) return res.redirect("/");
-    const user = await User.find({ id: req.params.id });
+    if (!req.query.id) return res.redirect("/");
+    const id = req.query.id;
+    const user = await User.findById(id);
     res.send(user);
   } catch (error) {
-    next(error);
+    res.send(error);
   }
 }
 
 exports.user_edit_get = async (req, res, next) => {
   try {
     if (!req.params.id) return res.redirect("/");
-    const user = await User.find({ id: req.params.id });
+    const user = await User.find({ _id: req.params.id });
     res.send(user);
   } catch (error) {
     next(error);

@@ -47,12 +47,14 @@
             <tbody class="table100-body">
                 <%for (let i = 0; i < users.length; i++) { %>
                 <tr>
-                    <td><%= users[i].fullname%></td>
+
+                    <td><a href='/users/detail?id=<%=users[i]._id%>'><%= users[i].fullname%></a></td>
                     <td><%= users[i].username%></td>
                     <td><%= users[i].userRight%></td>
                     <td><%= users[i].email%></td>
                     <td><%= users[i].phoneNumber%></td>
                     <td><%= users[i].address%></td>
+        
                 </tr>
                 <% } %>
             </tbody>
