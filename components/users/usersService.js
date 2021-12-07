@@ -3,16 +3,19 @@ const User = require("../../models/schema/User");
 
 exports.user_list_get = (req, res) => {
   let perPage = 20; // Number of users per page
-  let page = req.query.page || 1;
+  // let page = req.query.page || 1;
+  let page= (!isNaN(req.query.page) && req.query.page > 0) ? req.query.page : 1;
+  console.log(page);
   let myquery = {};
-  if (req.query.uright) {
-    myquery.userRight = "admin";
-  }
+  // if (req.query.uright) {
+  //   myquery.userRight = "admin";
+  // }
   User.find(myquery)
     .skip(perPage * page - perPage)
     .limit(perPage)
     .exec((err, users) => {
-      User.countDocuments((err, count) => {
+      console.log(users);
+      User.find(myquery).countDocuments((err, count) => {
         if (err) return next(err);
         res.send({
           users: users,

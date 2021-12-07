@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-    <title>Table V04</title>
+    <title>User</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="table-style/images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="/table-style/images/icons/favicon.ico" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/css/util.css">
-    <link rel="stylesheet" type="text/css" href="table-style/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/css/main.css">
     <!--===============================================================================================-->
 </head>
 
@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-12">
             <h2 class="page-title">User List</h2>
-            <a href="#" class="btn btn-text-secondary float-right">CREATE A NEW USER</a>
+            <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a>
         </div>
     </div>
 
@@ -35,9 +35,8 @@
         <table class="table100 ver1">
             <thead>
                 <tr>
-                    <th scope="col">Account ID</th>
+                    <th scope="col">Full name</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Accountname</th>
                     <th scope="col">Role</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone number</th>
@@ -45,89 +44,18 @@
                 </tr>
             </thead>
             <tbody class="table100-body">
+                <%for (let i = 0; i < users.length; i++) { %>
                 <tr>
-                    <td>100192712</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>nguyenvana3321</td>
-                    <td>User</td>
-                    <td>nguyenvana1927@gmail.com</td>
-                    <td>09172541812</td>
-                    <td>123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
+                    <td><%= users[i].fullname%></td>
+                    <td><%= users[i].username%></td>
+                    <td><%= users[i].userRight%></td>
+                    <td><%= users[i].email%></td>
+                    <td><%= users[i].phoneNumber%></td>
+                    <td><%= users[i].address%></td>
                 </tr>
-                <tr>
-                    <td>100192713</td>
-                    <td>Nguyễn Văn B</td>
-                    <td>nguyenvanb3321</td>
-                    <td>User</td>
-                    <td>nguyenvanb321@gmail.com</td>
-                    <td>09172541711</td>
-                    <td>123, Điện Biên Phủ, Q.Bình Thạnh, TP.HCM</td>
-                </tr>
-                <tr>
-                    <td>100192714</td>
-                    <td>Nguyễn Thị Bưởi</td>
-                    <td>nguyenthibuoi</td>
-                    <td>Admin</td>
-                    <td>nguyenthibuoi11@gmail.com</td>
-                    <td>09172123812</td>
-                    <td>213, Phạm Ngũ Lão, Quận 5, TP.HCM</td>
-                </tr>
+                <% } %>
             </tbody>
         </table>
     </div>
 
-    <!--<div class="table100 ver1 m-b-110">
-        <div class="table100-head">
-            <table>
-                <thead>
-                    <tr class="row100 head">
-                        <th class="cell100 column10">Account ID</th>
-                        <th class="cell100 column15">Username</th>
-                        <th class="cell100 column15">Accountname</th>
-                        <th class="cell100 column10">Role</th>
-                        <th class="cell100 column20">Email</th>
-                        <th class="cell100 column15">Phone number</th>
-                        <th class="cell100 column15">Address</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-
-        <div class="table100-body js-pscroll">
-            <table>
-                <tbody>
-                    <tr class="row100 body">
-                        <td class="cell100 column10">100192712</td>
-                        <td class="cell100 column15">Nguyễn Văn A</td>
-                        <td class="cell100 column15">nguyenvana3321</td>
-                        <td class="cell100 column10">User</td>
-                        <td class="cell100 column20">nguyenvana1927@gmail.com</td>
-                        <td class="cell100 column10">09172541812</td>
-                        <td class="cell100 column20">123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
-                    </tr>
-                    <tr class="row100 body">
-                        <td class="cell100 column10">100192713</td>
-                        <td class="cell100 column15">Nguyễn Văn B</td>
-                        <td class="cell100 column15">nguyenvanb3321</td>
-                        <td class="cell100 column10">User</td>
-                        <td class="cell100 column20">nguyenvanb321@gmail.com</td>
-                        <td class="cell100 column10">09172541711</td>
-                        <td class="cell100 column20">123, Điện Biên Phủ, Q.Bình Thạnh, TP.HCM</td>
-                    </tr>
-                    <tr class="row100 body">
-                        <td class="cell100 column10">100192714</td>
-                        <td class="cell100 column15">Nguyễn Thị Bưởi</td>
-                        <td class="cell100 column15">nguyenthibuoi</td>
-                        <td class="cell100 column10">Admin</td>
-                        <td class="cell100 column20">nguyenthibuoi11@gmail.com</td>
-                        <td class="cell100 column10">09172123812</td>
-                        <td class="cell100 column20">213, Phạm Ngũ Lão, Quận 5, TP.HCM</td>
-                    </tr>
-                
-
-
-                </tbody>
-            </table>
-        </div>
-    </div>-->
 </body>
