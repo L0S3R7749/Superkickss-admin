@@ -8,6 +8,7 @@ const User = require("../../models/schema/User");
 const service = require("./usersService");
 const router = express.Router();
 
+router.get('/paramsApi',service.user_list_get);
 
 // tested
 // router.get("/", service.user_list_get);
@@ -41,7 +42,7 @@ router.get("/create", (req,res,next)=>{
 
 router.post("/", service.user_create_post);
 
-router.get('/paramsApi',service.user_list_get);
+
 
 router.get("/:id", service.user_detail_get);
 
