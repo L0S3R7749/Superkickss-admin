@@ -9,7 +9,7 @@ const productRouter = require("./products/");
 const orderRouter = require("./orders/");
 const userRouter = require("./users/");
 
-router.use("/auth", checkAuth.isNotAuthenticated, authRouter);
+router.use("/auth",  authRouter);
 router.use("/products", productRouter);
 router.use("/orders", checkAuth.isAuthenticated, orderRouter);
 router.use("/users", userRouter);

@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const User = require("../../models/schema/User");
 
 exports.user_list_get = (req, res) => {
-  let perPage = 20; // Number of users per page
+  let perPage = 5; // Number of users per page
   // let page = req.query.page || 1;
   let page= (!isNaN(req.query.page) && req.query.page > 0) ? req.query.page : 1;
   console.log(page);

@@ -21,10 +21,10 @@ router.post('/login',
     })
 );
 
-router.get('/logout', (req, res) => {
+router.get('/logout',(req, res) => {
     console.log('caohaisil');
-    req.logOut();
+    req.logout();
     res.redirect('/auth/login');
-})
+});
 
 module.exports = router;

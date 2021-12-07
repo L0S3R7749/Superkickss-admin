@@ -481,31 +481,3 @@ th, td {
 .text-primary{
   color: var(--primary-color) !important;
 }
-
-.page-index ul{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  line-height: 30px;
-  color: var(--primary-color);
-}
-
-.page-index ul li{
-  display: inline-block;
-  border: 1px solid var(--primary-color);
-  font-size: 18px;
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
-  border-radius: 50%;
-}
-
-.page-index li:hover{
-  background-color: var(--primary-color);
-  color: #fff !important;
-}
-
-.page-index li a:hover{
-  color: #fff !important;
-}
