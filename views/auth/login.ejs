@@ -20,6 +20,14 @@
                         <h3 class="mt-5 mb-3" style="color: #2d3058;">Log in</h3>
                     </div>
                     <form class="login-form" method="post">
+                        <% if (message.length > 0) { %>
+                            <div class="col-md-12 mb-3">
+                              <div class="error">
+                                <i class="fas fa-times-circle me-2"></i>
+                                <span style="color: red"><%= message%></span>
+                              </div>
+                            </div>
+                          <% } %>
                         <div class="col-md-12 mb-3 mt-3">
                             <input class="form-control" type="text" name="username" placeholder="Username" />
                         </div>
