@@ -4,7 +4,7 @@ if (window.location.pathname == "/products") {
         const id = $(this).attr('data-id');
 
         let request = {
-            "url": `http://localhost:5000/products/api/${id}`,
+            "url": `http://admin2-superkickss.herokuapp.com/products/api/${id}`,
             "method": "DELETE"
         }
 
