@@ -9,7 +9,6 @@ const router = express.Router();
 // Form dang nhap
 router.get('/login', checkAuth.isNotAuthenticated, (req, res) => {
     res.render('./auth/login', {title: 'Login', message: req.flash('error')});
-    console.log(req.flash('error'));
 });
 
 router.post('/login', 
@@ -22,9 +21,8 @@ router.post('/login',
 );
 
 router.get('/logout',(req, res) => {
-    console.log('caohaisil');
     req.logout();
-    res.redirect('/auth/login');
+    res.redirect('/');
 });
 
 module.exports = router;
