@@ -8,23 +8,23 @@ const router = express.Router();
 
 // Form dang nhap
 router.get('/login', checkAuth.isNotAuthenticated, (req, res) => {
-    res.render('./auth/login', {title: 'Login'
-        // ,body: '../auth/login'
-    });
+    res.render('./auth/login', {title: 'Login', message: req.flash('error')});
+    console.log(req.flash('error'));
 });
 
 router.post('/login', 
     checkAuth.isNotAuthenticated,
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/login',
+        failureRedirect: '/auth/login',
         failureFlash: true
     })
 );
 
-router.delete('/logout', (req, res) => {
-    req.logOut();
-    res.redirect('/');
-})
+router.get('/logout',(req, res) => {
+    console.log('caohaisil');
+    req.logout();
+    res.redirect('/auth/login');
+});
 
 module.exports = router;
