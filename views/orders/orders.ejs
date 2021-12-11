@@ -6,116 +6,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="widtd=device-widtd, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="table-style/images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="/table-style/images/icons/favicon.ico" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="table-style/css/util.css">
-    <link rel="stylesheet" type="text/css" href="table-style/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/table-style/css/main.css">
     <!--===============================================================================================-->
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-12">
-            <h2 class="page-title">Order List</h2>
-            <a href="#" class="btn btn-text-secondary float-right">CREATE A NEW ORDER</a>
+    <div class="col-md-12">
+        <div class="row">
+
+            <div class="col-12">
+                <h2 class="page-title">Order List</h2>
+                <!-- <a href="#" class="btn btn-text-secondary float-right">CREATE A NEW ORDER</a> -->
+            </div>
+        </div>
+        <div class="row">
+            <%- include('../partials/search')%>
+            <div class="col-md-5">
+                <a href="#" class="btn btn-text-secondary float-right">CREATE A NEW ORDER</a>
+            </div>
         </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive orders-table">
         <table class="table100 ver1">
             <thead>
                 <tr>
-                    <th scope="col">Product ID</th>
-                    <th scope="col">User ID</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Created date</th>
-                    <th scope="col">Pay method</th>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Username</th>
                     <th scope="col">Address</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Created date</th>
+                    <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody class="table100-body">
                 <tr>
-                    <td >BBAA1212</td>
-                    <td >100192712</td>
-                    <td >Completed</td>
-                    <td >10/11/2021</td>
-                    <td >Visa</td>
-                    <td >123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
+                    <td>1</td>
+                    <td>caohaisil</td>
+                    <td>290/26, Nơ Trang Long, P.12, Q.Bình Thạnh, TP.HCM</td>
+                    <td>300.000</td>
+                    <td>10/11/2021</td>
+                    <td >
+                        <span class="order-status order-shipping">
+                            Delivering
+                        </span>
+                    </td>
                 </tr>
                 <tr>
-                    <td >BBAA1230</td>
-                    <td >100192712</td>
-                    <td >Shipping</td>
-                    <td >15/11/2021</td>
-                    <td >Visa</td>
-                    <td >123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
+                    <td>2</td>
+                    <td>caohaisil</td>
+                    <td>290/26, Nơ Trang Long, P.12, Q.Bình Thạnh, TP.HCM</td>
+                    <td>300.000</td>
+                    <td>10/11/2021</td>
+                    <td>
+                        <span class="order-status order-cancel">
+                            Cancel
+                        </span>
+                    </td>
                 </tr>
                 <tr>
-                    <td >BBAA1240</td>
-                    <td >100192712</td>
-                    <td >Shipping</td>
-                    <td >15/11/2021</td>
-                    <td >Visa</td>
-                    <td >123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
+                    <td>3</td>
+                    <td>caohaisil</td>
+                    <td>290/26, Nơ Trang Long, P.12, Q.Bình Thạnh, TP.HCM</td>
+                    <td>300.000</td>
+                    <td>10/11/2021</td>
+                    <td>
+                        <span class="order-status order-done">
+                            Done
+                        </span>
+                    </td>
             </tbody>
         </table>
     </div>
-
-    <!--<div class="table100 ver1 m-b-110">
-        <div class="table100-head">
-            <table>
-                <thead>
-                    <tr class="row100 head">
-                        <th class="cell100 column20">Product ID</th>
-                        <th class="cell100 column15">User ID</th>
-                        <th class="cell100 column15">Status</th>
-                        <th class="cell100 column15">Created date</th>
-                        <th class="cell100 column15">Pay method</th>
-                        <th class="cell100 column20">Address</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-
-        <div class="table100-body js-pscroll">
-            <table>
-                <tbody>
-                    <tr class="row100 body">
-                        <td class="cell100 column20">BBAA1212</td>
-                        <td class="cell100 column15">100192712</td>
-                        <td class="cell100 column15">Completed</td>
-                        <td class="cell100 column15">10/11/2021</td>
-                        <td class="cell100 column15">Visa</td>
-                        <td class="cell100 column20">123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
-                    </tr>
-                    <tr class="row100 body">
-                        <td class="cell100 column20">BBAA1230</td>
-                        <td class="cell100 column15">100192712</td>
-                        <td class="cell100 column15">Shipping</td>
-                        <td class="cell100 column15">15/11/2021</td>
-                        <td class="cell100 column15">Visa</td>
-                        <td class="cell100 column20">123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
-                    </tr>
-                    <tr class="row100 body">
-                        <td class="cell100 column20">BBAA1240</td>
-                        <td class="cell100 column15">100192712</td>
-                        <td class="cell100 column15">Shipping</td>
-                        <td class="cell100 column15">15/11/2021</td>
-                        <td class="cell100 column15">Visa</td>
-                        <td class="cell100 column20">123, Phạm Ngũ Lão, Q.5, TP.HCM</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>-->
 </body>

@@ -481,3 +481,27 @@ th, td {
 .text-primary{
   color: var(--primary-color) !important;
 }
+
+.orders-table .order-status{
+  --status-color: #fff;
+  display: inline-block;
+  width: 6rem;
+  padding: 5px 0rem;
+  text-align: center;
+  color:#fff;
+  background-color: var(--status-color);
+  border-radius: 5px;
+}
+
+.orders-table .order-shipping{
+  --status-color: #fd5202;
+}
+
+.orders-table .order-cancel{
+  --status-color: #ff0000;
+}
+
+.orders-table .order-done{
+  --status-color: #66b22e;
+}
+

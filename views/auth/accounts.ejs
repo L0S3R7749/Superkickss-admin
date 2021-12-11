@@ -25,10 +25,18 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-12">
-            <h2 class="page-title">User List</h2>
-            <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="page-title">User List</h2>
+                <!-- <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a> -->
+            </div>
+        </div>
+        <div class="row">
+            <%- include('../partials/search')%>
+            <div class="col-md-5">
+                <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a>
+            </div>
         </div>
     </div>
 
