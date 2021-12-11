@@ -13,6 +13,7 @@ router.get('/paramsApi',service.user_list_get);
 // tested
 // router.get("/", service.user_list_get);
 router.get("/", (req,res,next)=>{
+    console.log(res.locals.user);
     apicaller
     .callApi(`users/paramsApi?page=${req.query.page}`, "GET", null)
     .then(function (responseData) {
@@ -39,17 +40,34 @@ router.get("/create", (req,res,next)=>{
     });
 });
 
+router.get("/detail", (req, res, next) => {
+  apicaller
+  .callApi(`users/api?id=${req.query.id}`, "GET", null)  
+  .then(function(responseData) {
+    res.render("./homepage/index", {
+      title: responseData.data.fullname,
+      body: "../auth/_detail",
+      user: responseData.data,
+    })
+  })
+  .catch((err) => {
+    res.send(err);
+  })
+})
+
+router.get("/edit", (req, res) => {
+  res.send("Edit user page");
+})
+
 
 router.post("/", service.user_create_post);
 
+router.get('/paramsApi',service.user_list_get);
 
+router.get("/api", service.user_detail_get);
 
-router.get("/:id", service.user_detail_get);
+router.get("/api/:id/edit", service.user_edit_get);
 
-router.get("/:id/edit", service.user_edit_get);
-
-router.put("/:id", service.user_edit_put);
-
-
+router.put("/api/:id", service.user_edit_put);
 
 module.exports = router;
