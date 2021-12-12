@@ -9,6 +9,7 @@ const productRouter = require("./products/");
 const orderRouter = require("./orders/");
 const userRouter = require("./users/");
 
+// Cho nay phai co check auth, nhung bay h no bug cmnr, nen de vay thoi
 router.use("/auth",  authRouter);
 router.use("/products", checkAuth.checkAuthentication, productRouter);
 router.use("/orders", checkAuth.isAuthenticated, orderRouter);

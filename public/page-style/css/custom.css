@@ -4,7 +4,7 @@
 }
 
 @keyframes jelly {
-    
+
     0%,
     100% {
         transform: scale(1, 1);
@@ -35,12 +35,13 @@
     position: absolute;
     top: -12px;
     left: 10px;
-    background-color: #f4f4f4;
+    background-color: #fff !important;
     padding: 0px 7px;
 }
 
 .search-product input {
     height: 25px;
+    background-color: #fff !important
 }
 
 .box {
@@ -78,3 +79,51 @@
     animation: jelly 0.5s;
 }
 
+
+.order-detail {
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 10px #ddd;
+    padding: 2rem;
+}
+
+.order-detail .order-status{
+    color: #fff;
+    background-color: #ffa500;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+.order-detail h3{
+    display: block;
+    text-align: center;
+}
+
+.order-detail h3,
+.order-detail h5{
+    text-transform: uppercase;
+    color: #aaa;
+}
+
+.order-detail .order-table{
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.order-detail .order-table-head{
+    border-bottom: 2px solid #ddd;
+}
+
+.order-detail .order-table-body{
+    border-bottom: 3px solid #ccc;
+}
+
+.order-detail .order-table-body tr{
+    line-height: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-detail .total-price{
+    float: right;
+}

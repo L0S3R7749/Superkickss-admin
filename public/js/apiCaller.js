@@ -6,6 +6,7 @@ exports.callApi = (endpoint,method = 'GET',body) => {
     return axios({
         method: method,
         url: `${config}/${endpoint}`,
-        data: body
+        data: body,
+        withCredentials: true
     })
 }

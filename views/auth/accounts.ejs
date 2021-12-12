@@ -25,10 +25,18 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-12">
-            <h2 class="page-title">User List</h2>
-            <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="page-title">User List</h2>
+                <!-- <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a> -->
+            </div>
+        </div>
+        <div class="row">
+            <%- include('../partials/search')%>
+            <div class="col-md-5">
+                <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a>
+            </div>
         </div>
     </div>
 
@@ -47,12 +55,14 @@
             <tbody class="table100-body">
                 <%for (let i = 0; i < users.length; i++) { %>
                 <tr>
-                    <td><%= users[i].fullname%></td>
+
+                    <td><a href='/users/detail?id=<%=users[i]._id%>'><%= users[i].fullname%></a></td>
                     <td><%= users[i].username%></td>
                     <td><%= users[i].userRight%></td>
                     <td><%= users[i].email%></td>
                     <td><%= users[i].phoneNumber%></td>
                     <td><%= users[i].address%></td>
+        
                 </tr>
                 <% } %>
             </tbody>
