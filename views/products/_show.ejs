@@ -2,12 +2,12 @@
     <div class="col-sm-6 col-lg-4 mb-4">
         <div class="block-4 text-center border">
             <div class="block-4-image" style='width: 100%; height: 60%;'>
-                <a>
+                <a href="/products/detail?id=<%= products[i]._id%>">
                     <img alt="images placeholder" style='width: 100%;height: 100%;' src='<%= products[i].images[0].url%>'>
                 </a>
             </div>
             <div class="block-4-text p-4" style='width: 100%; height: 20%;'>
-                <h3><a class="text-primary" style='font-size: 20px'><%= products[i].name%></a></h3>
+                <h3><a href="/products/detail?id=<%= products[i]._id%>" class="text-primary" style='font-size: 20px'><%= products[i].name%></a></h3>
             </div>
             <p class="text-primary font-weight-bold" style='width: 100%; height: 5%;'>$<%= products[i].price%></p>
             <div class="buttons" style='width: 100%; height: 15%;'>

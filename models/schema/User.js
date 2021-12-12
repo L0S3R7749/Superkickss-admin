@@ -33,7 +33,12 @@ const userSchema = new mongoose.Schema({
         default: 'user',
     },
     image: {
-        type: String,
+        url: {
+            type: String
+        },
+        cloudinary_id: {
+            type: String
+        }
     }
 });
 

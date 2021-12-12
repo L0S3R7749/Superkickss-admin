@@ -4,7 +4,7 @@ if (window.location.pathname == "/products") {
         const id = $(this).attr('data-id');
 
         let request = {
-            "url": `http://admin-superkickss.herokuapp.com/products/api/${id}`,
+            "url": `http://localhost:5000/products/${id}`,
             "method": "DELETE"
         }
 
@@ -14,5 +14,5 @@ if (window.location.pathname == "/products") {
                 location.reload();
             })
         }
-    })
+    });
 }
