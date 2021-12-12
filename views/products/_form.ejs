@@ -27,7 +27,7 @@
         <div class="col-lg-10 mx-auto">
             <div class="card mt-2 mx-auto p-4 bg-light">
                 <div class="container">
-                    <form id="product-form" action="/products/" method="post" enctype="multipart/form-data">
+                    <form id="product-form" action="/products/create" method="post" enctype="multipart/form-data">
                         <div class="controls row">
                             <div class="col-lg-6">
                                 <div class="col-lg-12 row mb-3">
@@ -49,6 +49,8 @@
                                                 data-error="Brand is required." value="<%=product.brand%>">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-12 row mb-3">
                                     <div class="col-md-6 mb-3 p-0">
                                         <div class="form-group">
                                             <label for="form_brand">Price<span class="require">*</span></label>
@@ -58,28 +60,42 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 row mb-3">
-                                    <div class="row">Category</div>              
+                                <div class="col-lg-12 row mb-0">
+                                    Category
+                                </div>
+                                <div class="col-lg-12 row mb-3">          
                                     <div class="row">
                                         <div id="form_category">
                                             <div class="form-check">
                                                 <label for="form_category_gender" class="category_group">Gender</label>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
-                                                        name="gender" id="maleRadio" value="male">
+                                                        name="gender" id="maleRadio" value="Male"
+                                                        <% if (product.category.gender === "Male") { %>
+                                                            <%= "checked"%>
+                                                        <% } %>
+                                                    >
                                                     <label class="form-check-label"
                                                         for="femaleRadio">Male</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
-                                                        name="gender" id="femaleRadio" value="female">
+                                                        name="gender" id="femaleRadio" value="Female"
+                                                        <% if (product.category.gender === "Female") { %>
+                                                            <%= "checked"%>
+                                                        <% } %>    
+                                                    >
                                                     <label class="form-check-label"
                                                         for="femaleRadio">Female</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
                                                         name="gender" id="bothGenderRadio"
-                                                        value="unisex">
+                                                        value="Unisex"
+                                                        <% if (product.category.gender === "Unisex") { %>
+                                                            <%= "checked"%>
+                                                        <% } %>    
+                                                    >
                                                     <label class="form-check-label"
                                                         for="bothGenderRadio">Unisex</label>
                                                 </div>
@@ -89,20 +105,32 @@
                                                     class="category_group">Type</label>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
-                                                        name="type" id="sportRadio" value="sport">
+                                                        name="type" id="sportRadio" value="Sport"
+                                                        <% if (product.category.type === "Sport") { %>
+                                                            <%= "checked"%>
+                                                        <% } %>
+                                                    >
                                                     <label class="form-check-label"
                                                         for="sportRadio">Sport</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
-                                                        name="type" id="casualRadio" value="casual">
+                                                        name="type" id="casualRadio" value="Casual"
+                                                        <% if (product.category.type === "Casual") { %>
+                                                            <%= "checked"%>
+                                                        <% } %>
+                                                    >
                                                     <label class="form-check-label"
                                                         for="casualRadio">Casual</label>
                                                 </div>
     
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
-                                                        name="type" id="bothRadio" value="street">
+                                                        name="type" id="bothRadio" value="Street"
+                                                        <% if (product.category.type === "Street") { %>
+                                                            <%= "checked"%>
+                                                        <% } %>    
+                                                    >
                                                     <label class="form-check-label" for="bothRadio">Street</label>
                                                 </div>
                                             </div>
@@ -227,7 +255,7 @@
                         </div>
                         <div class="col-md-12"> 
                             <button class="btn btn-success btn-send pt-2 btn-block ">
-                                ADD PRODUCT
+                                <%= nameBtn%> PRODUCT
                             </button>
                         </div>
                     </form>

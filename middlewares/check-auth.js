@@ -13,6 +13,13 @@ const checkAuth = {
       return res.redirect('/');
     }
     next();
+  },
+
+  checkAuthentication: (req, res, next) => {
+    if (req.isAuthenticated())
+      next();
+    else
+      res.redirect('/auth/login');
   }
 }
 
