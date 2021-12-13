@@ -21,6 +21,7 @@ router.post('/create',
 
 //Product detail
 router.get('/detail', controller.productDetail);
+router.post('/detail', controller.updateProduct);
 
 
 module.exports = router;
