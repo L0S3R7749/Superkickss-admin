@@ -7,12 +7,11 @@ const router = express.Router();
 
 
 // Form dang nhap
-router.get('/login', checkAuth.isNotAuthenticated, (req, res) => {
+router.get('/login', (req, res) => {
     res.render('./auth/login', {title: 'Login', message: req.flash('error')});
 });
 
 router.post('/login', 
-    checkAuth.isNotAuthenticated,
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/auth/login',

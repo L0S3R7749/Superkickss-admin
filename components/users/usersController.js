@@ -1,73 +1,66 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
-const apicaller = require("../../public/js/apiCaller");
-const upload = require("../../middlewares/multer");
-const passport = require("../../middlewares/passport");
-const checkAuth = require("../../middlewares/check-auth");
-const User = require("../../models/schema/User");
 const service = require("./usersService");
-const router = express.Router();
 
-router.get('/paramsApi',service.user_list_get);
+module.exports = {
+  get_users_list: async (req, res) => {
+    try {
+      const page = (!isNaN(req.query.page) && req.query.page > 0) ? parseInt(req.query.page) : 1;
+      const users = await service.list_users(page);
+      const countAll = await service.customCount();
+      const pages = Math.ceil(countAll / 5);
 
-// tested
-// router.get("/", service.user_list_get);
-router.get("/", (req,res,next)=>{
-    console.log(res.locals.user);
-    apicaller
-    .callApi(`users/paramsApi?page=${req.query.page}`, "GET", null)
-    .then(function (responseData) {
-      res.render("./homepage/index", {
+      res.render('./homepage/index', {
         title: "Users",
         body: "../auth/accounts",
         home: "/users?",
-        users: responseData.data.users,
-        current: responseData.data.current,
-        pages: responseData.data.pages,
+        currentRoute: "/users",
+        users: users,
+        current: page,
+        pages: pages,
       });
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-});
 
-// router.get("/create", service.user_create_get);
-router.get("/create", (req,res,next)=>{
-    res.render("./homepage/index", {
-        title: 'New user',
-        body: "../auth/_form",
-        user: new User()
-    });
-});
+    } catch(err) {
+      console.log(err);
+    }
+  },
 
-router.get("/detail", (req, res, next) => {
-  apicaller
-  .callApi(`users/api?id=${req.query.id}`, "GET", null)  
-  .then(function(responseData) {
-    res.render("./homepage/index", {
-      title: responseData.data.fullname,
-      body: "../auth/_detail",
-      user: responseData.data,
-    })
-  })
-  .catch((err) => {
-    res.send(err);
-  })
-})
+  search: async (req, res) => {
+    try {
+      const page = (!isNaN(req.query.page) && req.query.page > 0) ? parseInt(req.query.page) : 1;
+      const users = await service.search_list(req.query.search, page);
+      const countAll = await service.customCount(req.query.search);
+      const pages = Math.ceil(countAll / 5);
 
-router.get("/edit", (req, res) => {
-  res.send("Edit user page");
-})
+      res.render('./homepage/index', {
+        title: "Search Results",
+        body: "../auth/accounts",
+        home: `/users/search?search=${req.query.search}&`,
+        currentRoute: "/users",
+        users: users,
+        current: page,
+        pages: pages,
+      })
 
+    } catch(err) {
+      console.log(err);
+    }
+  },
 
-router.post("/", service.user_create_post);
+  get_user_detail: async (req, res) => {
+    try {
+      const idTarget = req.query.id;
+      const targetUser = await service.findTargetUser(idTarget);
 
-router.get('/paramsApi',service.user_list_get);
+      res.render('./homepage/index', {
+        title: targetUser.fullname,
+        body: "../auth/_detail",
+        user: targetUser,
+      });
+    } catch(err) {
+      console.log(err);
+    }
+  },
 
-router.get("/api", service.user_detail_get);
-
-router.get("/api/:id/edit", service.user_edit_get);
-
-router.put("/api/:id", service.user_edit_put);
-
-module.exports = router;
+  edit_user: async (req, res) => {
+    res.send('Edit user page');
+  }
+}

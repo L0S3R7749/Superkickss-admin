@@ -10,7 +10,7 @@ module.exports = {
       const countAll = await productServices.countByQuery();
       const pages = Math.ceil(countAll / 9);
 
-      res.render('./homepage/index', {title: 'Products', body: '../products/products', products: productList, pages: pages, current: page, home: '/products?'});
+      res.render('./homepage/index', {title: 'Products', body: '../products/products', products: productList, pages: pages, current: page, home: '/products?', currentRoute: '/products'});
     } catch (err) {
       console.log(err.message);
     }
@@ -19,11 +19,11 @@ module.exports = {
   search: async (req, res) => {
     try {
       const page = (!isNaN(req.query.page) && req.query.page > 0) ? parseInt(req.query.page) : 1;
-      const productList = await productServices.search_list(req.query.search,page);
+      const productList = await productServices.search_list(req.query.search, page);
       const countAll = await productServices.countByQuery(req.query.search);
       const pages = Math.ceil(countAll / 9);
 
-      res.render('./homepage/index', {title: 'Search Results', body: '../products/products', products: productList, pages: pages, current: page, home: `/products/search?search=${req.query.search}&`})
+      res.render('./homepage/index', {title: 'Search Results', body: '../products/products', products: productList, pages: pages, current: page, home: `/products/search?search=${req.query.search}&`, currentRoute: '/products'})
     } catch (err) {
       console.log(err.message);
     }
