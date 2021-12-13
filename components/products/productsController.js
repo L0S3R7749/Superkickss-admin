@@ -115,6 +115,7 @@ module.exports = {
       const id = req.params.productId;
       const updateData = req.body;
       await productServices.update_product(id, updateData);
+      res.redirect(`/products/detail?id=${id}`);
     } catch (err) {
       console.log(err);
     }
