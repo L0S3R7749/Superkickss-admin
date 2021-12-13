@@ -35,13 +35,14 @@
     position: absolute;
     top: -12px;
     left: 10px;
-    background-color: #fff !important;
+    background-color: #f4f4f4 !important;
     padding: 0px 7px;
+    z-index: 1;
 }
 
 .search-product input {
     height: 25px;
-    background-color: #fff !important
+    background-color: inherit !important
 }
 
 .box {
@@ -126,4 +127,10 @@
 
 .order-detail .total-price{
     float: right;
+}
+
+.operator-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

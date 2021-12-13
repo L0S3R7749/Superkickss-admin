@@ -201,7 +201,7 @@ th, td {
 /*---------------------------------------------*/
 
 .table100.ver1 {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: hidden;
   box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
@@ -257,7 +257,7 @@ th, td {
 /*---------------------------------------------*/
 
 .table100.ver2 {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: hidden;
   box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
@@ -306,7 +306,7 @@ th, td {
 /*---------------------------------------------*/
 
 .table100.ver3 {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: hidden;
   box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
@@ -418,7 +418,7 @@ th, td {
 .table100.ver5 .table100-body tr {
   overflow: hidden; 
   border-bottom: 10px solid #fff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .table100.ver5 .table100-body table { 
@@ -505,3 +505,23 @@ th, td {
   --status-color: #66b22e;
 }
 
+.table-header{
+  text-align: center;
+}
+
+.operator-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.operator-buttons a{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.operator-buttons a i{
+  width: 20px !important;
+  height: 20px;
+}

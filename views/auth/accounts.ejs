@@ -4,24 +4,17 @@
 <head>
     <title>User</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="/table-style/images/icons/favicon.ico" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/table-style/vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/table-style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/table-style/vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/table-style/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/table-style/vendor/perfect-scrollbar/perfect-scrollbar.css">
-    <!--===============================================================================================-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="icon" type="image/png" href="/table-style/images/icons/favicon.ico" />    
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/bootstrap/css/bootstrap.min.css">    
+    <link rel="stylesheet" type="text/css" href="/table-style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/animate/animate.css">    
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/select2/select2.min.css">    
+    <link rel="stylesheet" type="text/css" href="/table-style/vendor/perfect-scrollbar/perfect-scrollbar.css">    
     <link rel="stylesheet" type="text/css" href="/table-style/css/util.css">
     <link rel="stylesheet" type="text/css" href="/table-style/css/main.css">
-    <!-- <link rel="stylesheet" type="text/css" href="/product-style/css/productlist.css"> -->
-    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 
 <body>
@@ -44,12 +37,14 @@
         <table class="table100 ver1">
             <thead>
                 <tr>
-                    <th scope="col">Full name</th>
+                    <th scope="col" class="table-header">Full name</th>
                     <th scope="col">Username</th>
                     <th scope="col">Role</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone number</th>
-                    <th scope="col">Address</th>
+                    <!-- <th scope="col">Address</th> -->
+                    <th scope="col">Status</th>
+                    <th scope="col" class="table-header">Operator</th>
                 </tr>
             </thead>
             <tbody class="table100-body">
@@ -61,13 +56,20 @@
                     <td><%= users[i].userRight%></td>
                     <td><%= users[i].email%></td>
                     <td><%= users[i].phoneNumber%></td>
-                    <td><%= users[i].address%></td>
-        
+                    <td>Status here</td>
+                    <td class="operator-buttons">
+                        <a href="">                            
+                            <i class="fas fa-pen-square"></i>
+                        </a>
+                        <a href="">
+                            <i class="fas fa-lock"></i>
+                        </a>
+                    </td>
+                    <!-- <td><%= users[i].address%></td> -->
                 </tr>
                 <% } %>
             </tbody>
         </table>
     </div>
     <%- include('../partials/pagination')%>
-
 </body>
