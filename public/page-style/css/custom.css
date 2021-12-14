@@ -129,8 +129,8 @@
     float: right;
 }
 
-.operator-buttons{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.user-info .user-avatar{
+    width: 150px;
+    height: 150px;
+    background-color: #f00;
 }

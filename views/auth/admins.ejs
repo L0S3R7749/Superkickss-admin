@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>User</title>
+    <title>Admin</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link rel="icon" type="image/png" href="/table-style/images/icons/favicon.ico" />    
@@ -21,12 +21,14 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-12">
-                <h2 class="page-title">User List</h2>
-                <!-- <a href="/users/create" class="btn btn-text-secondary float-right">CREATE A NEW USER</a> -->
+                <h2 class="page-title">Admin List</h2>
             </div>
         </div>
         <div class="row">
-            <%- include('../partials/search')%>
+            
+            <div class="col-md-5">
+                <a href="/admins/create" class="btn btn-text-secondary float-right">CREATE A NEW ADMIN</a>
+            </div>
         </div>
     </div>
 
@@ -39,20 +41,19 @@
                     <th scope="col">Role</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone number</th>
-                    <!-- <th scope="col">Address</th> -->
                     <th scope="col">Status</th>
                     <th scope="col" class="table-header">Operator</th>
                 </tr>
             </thead>
             <tbody class="table100-body">
-                <%for (let i = 0; i < users.length; i++) { %>
+                
                 <tr>
 
-                    <td><a href='/users/detail?id=<%=users[i]._id%>'><%= users[i].fullname%></a></td>
-                    <td><%= users[i].username%></td>
-                    <td><%= users[i].userRight%></td>
-                    <td><%= users[i].email%></td>
-                    <td><%= users[i].phoneNumber%></td>
+                    <td><a href='/users/detail?id='>abc</a></td>
+                    <td>abc</td>
+                    <td>abc</td>
+                    <td>abc</td>
+                    <td>abc</td>
                     <td>Status here</td>
                     <td class="operator-buttons">
                         <a href="">                            
@@ -62,11 +63,11 @@
                             <i class="fas fa-lock"></i>
                         </a>
                     </td>
-                    <!-- <td><%= users[i].address%></td> -->
+                   
                 </tr>
-                <% } %>
+                
             </tbody>
         </table>
     </div>
-    <%- include('../partials/pagination')%>
+    
 </body>

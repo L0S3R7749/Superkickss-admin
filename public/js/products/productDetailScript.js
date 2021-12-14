@@ -1,10 +1,10 @@
-if (window.location.pathname == "/products") {
+if (window.location.pathname == "/products" || window.location.pathname == "/products/search") {
     $ondelete = $("div.buttons a.btn-danger");
     $ondelete.click(function() {
         const id = $(this).attr('data-id');
 
         let request = {
-            "url": `http://localhost:5000/products/${id}`,
+            "url": `/products/${id}`,
             "method": "DELETE"
         }
 

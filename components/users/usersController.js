@@ -62,5 +62,20 @@ module.exports = {
 
   edit_user: async (req, res) => {
     res.send('Edit user page');
+  },
+
+  get_local_user_info: async (req, res) => {
+    try {
+      const idTarget = req.query.id;
+      const targetUser = await service.findTargetUser(idTarget);
+
+      res.render('./homepage/index', {
+        title: targetUser.fullname,
+        body: "../auth/_localuserinfo",
+        user: targetUser,
+      });
+    } catch(err) {
+      console.log(err);
+    }
   }
 }
