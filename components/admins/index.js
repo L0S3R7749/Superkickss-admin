@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./adminsController');
-// const checkAuth = require('../../middlewares/check-auth');
 
-
-router.use('/', controller.list);
+router.get('/', controller.get_admins_list);
 
 module.exports = router;
