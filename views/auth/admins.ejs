@@ -22,13 +22,11 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="page-title">Admin List</h2>
+                <a href="/admins/create" class="btn btn-text-secondary float-right">CREATE A NEW ADMIN</a>
             </div>
         </div>
         <div class="row">
-            
-            <div class="col-md-5">
-                <a href="/admins/create" class="btn btn-text-secondary float-right">CREATE A NEW ADMIN</a>
-            </div>
+            <%- include('../partials/search')%>
         </div>
     </div>
 
@@ -46,28 +44,27 @@
                 </tr>
             </thead>
             <tbody class="table100-body">
-                
-                <tr>
-
-                    <td><a href='/users/detail?id='>abc</a></td>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>Status here</td>
-                    <td class="operator-buttons">
-                        <a href="">                            
-                            <i class="fas fa-pen-square"></i>
-                        </a>
-                        <a href="">
-                            <i class="fas fa-lock"></i>
-                        </a>
-                    </td>
-                   
-                </tr>
-                
+                <%for (let i = 0; i < admins.length; i++) { %>
+                    <tr>
+    
+                        <td><a href='/admins/detail?id=<%=admins[i]._id%>'><%= admins[i].fullname%></a></td>
+                        <td><%= admins[i].username%></td>
+                        <td><%= admins[i].userRight%></td>
+                        <td><%= admins[i].email%></td>
+                        <td><%= admins[i].phoneNumber%></td>
+                        <td>Status here</td>
+                        <td class="operator-buttons">
+                            <a href="">                            
+                                <i class="fas fa-pen-square"></i>
+                            </a>
+                            <a href="">
+                                <i class="fas fa-lock"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <% } %>
             </tbody>
         </table>
     </div>
-    
+    <%- include('../partials/pagination')%>
 </body>
