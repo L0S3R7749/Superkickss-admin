@@ -40,14 +40,14 @@
                     <th scope="col">Email</th>
                     <th scope="col">Phone number</th>
                     <th scope="col">Status</th>
-                    <th scope="col" class="table-header">Operator</th>
+                    <th scope="col" class="table-header">Actions</th>
                 </tr>
             </thead>
             <tbody class="table100-body">
                 <%for (let i = 0; i < users.length; i++) { %>
                 <tr>
 
-                    <td><a href='/users/detail?id=<%=users[i]._id%>'><%= users[i].fullname%></a></td>
+                    <td><a href='/users/detail/<%=users[i]._id%>'><%= users[i].fullname%></a></td>
                     <td><%= users[i].username%></td>
                     <td><%= users[i].userRight%></td>
                     <td><%= users[i].email%></td>

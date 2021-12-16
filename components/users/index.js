@@ -10,10 +10,10 @@ router.get('/', controller.get_users_list);
 router.get('/search', controller.search);
 
 //User detail
-router.get('/detail', controller.get_user_detail);
+router.get('/detail/:id', controller.get_user_detail);
 
 //Local user info
-router.get('/userinfo',controller.get_local_user_info);
+router.get('/userinfo/:id',controller.get_local_user_info);
 
 //Update User
 router.get('/edit', controller.edit_user);

@@ -1,4 +1,5 @@
 const User = require("../../models/schema/User");
+const bcrypt = require('bcrypt');
 
 module.exports = {
   list_admins: (page=1,perPage=5) => {
@@ -32,5 +33,44 @@ module.exports = {
 
   findTargetAdmin: (id) => {
     return User.findById(id);
+  },
+
+  checkExist: (username, email, phone) => {
+    return User.findOne({$and: [
+      {$or: [
+          {username: username},
+          {email: email},
+          {phoneNumber: phone}
+      ]},
+      {userRight: 'admin'}]}).lean();
+  },
+
+  addAdmin: (reqBody) => {
+    let tempAddress = [];
+    tempAddress.push({address: reqBody.address});
+    const newAdmin = new User({
+      fullname: reqBody.fullname,
+      username: reqBody.username,
+      password: bcrypt.hashSync(reqBody.username,10),
+      email: reqBody.email,
+      phoneNumber: reqBody.phone,
+      addresses: tempAddress,
+      userRight: 'admin',
+    });
+    return newAdmin.save();
+  },
+
+  updateAdmin: (id, data) => {
+    return User.findByIdAndUpdate(id, data, {
+      useFindAndModify: false,
+      returnDocument: 'after'
+    });
+  },
+
+  accountActions: (id, option) => {
+    return User.findByIdAndUpdate(id, option, {
+      useFindAndModify: false,
+      returnDocument: 'after'
+    });
   }
 }

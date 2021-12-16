@@ -47,13 +47,16 @@ module.exports = {
 
   get_user_detail: async (req, res) => {
     try {
-      const idTarget = req.query.id;
+      const idTarget = req.params.id;
       const targetUser = await service.findTargetUser(idTarget);
 
       res.render('./homepage/index', {
         title: targetUser.fullname,
         body: "../auth/_detail",
         user: targetUser,
+        option: "UPDATE",
+        isCreate: false,
+        message: req.flash('error'),
       });
     } catch(err) {
       console.log(err);
@@ -66,7 +69,7 @@ module.exports = {
 
   get_local_user_info: async (req, res) => {
     try {
-      const idTarget = req.query.id;
+      const idTarget = req.params.id;
       const targetUser = await service.findTargetUser(idTarget);
 
       res.render('./homepage/index', {
