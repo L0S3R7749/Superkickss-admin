@@ -1,6 +1,6 @@
 <div>
   <div class="container user-info">
-      <form>
+      <form method="post">
           <div class="row mt-3">
               <div class="col-md-4">
                   <div class="pt-3 pl-3 mr-5">
@@ -13,29 +13,37 @@
                   </div>
               </div>
               <div class="col-md-8 pt-3 pl-5">
+                    <% if (message.length > 0) { %>
+                    <div class="col-md-10 mb-2">
+                      <div class="error">
+                        <i class="fas fa-times-circle me-2"></i>
+                        <span><%= message%></span>
+                      </div>
+                    </div>
+                    <% } %>
                   <div class="col-md-10 mb-2">
-                      <label>Full name</label>
+                      <label>Fullname</label>
                       <input class="form-control" type="text" name="fullname" placeholder="Fullname" value='<%= user.fullname%>'/>
                   </div>
                   <div class="col-md-10 mb-2">
-                      <label>User name</label>
+                      <label>Username</label>
                       <input class="form-control" type="text" name="username" placeholder="Username"
-                          disabled="true" value='<%= user.username%>'/>
+                        value='<%= user.username%>'  <%= isCreate ? '' : 'disabled'%>/>
                   </div>
                   <div class="col-md-10 mb-2">
                       <label>Email</label>
-                      <input class="form-control" type="email" name="email" placeholder="Email" disabled="true" value='<%= user.email%>'/>
+                      <input class="form-control" type="email" name="email" placeholder="Email"  value='<%= user.email%>' <%= isCreate ? '' : 'disabled'%>/>
                   </div>
                   <div class="col-md-10 mb-2">
                       <label>Phone</label>
-                      <input class="form-control" type="text" name="phone" placeholder="Phone" disabled="true" value='<%= user.phoneNumber%>'/>
+                      <input class="form-control" type="text" name="phone" placeholder="Phone"  value='<%= user.phoneNumber%>'  <%= isCreate ? '' : 'disabled'%>/>
                   </div>
                   <div class="col-md-10 mb-2">
                       <label>Address</label>
-                      <input class="form-control" type="text" name="address" placeholder="Address" value='<%= user.address%>'/>
+                      <input class="form-control" type="text" name="address" placeholder="Address" value="<%= user.addresses[0] ? user.addresses[0].address : '' %>"/>
                   </div>
                   <div class="col-md-10 mt-5 d-flex justify-content-center">
-                      <button type="submit" class="col-md-5 btn btn-primary">Update Info</button>
+                      <button type="submit" class="col-md-5 btn btn-primary"><%= option%></button>
                   </div>
               </div>
           </div>

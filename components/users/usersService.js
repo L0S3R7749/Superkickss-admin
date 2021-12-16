@@ -32,5 +32,12 @@ module.exports = {
 
   findTargetUser: (id) => {
     return User.findById(id);
+  },
+
+  updateUser: (id, data) => {
+    return User.findById(id, data, {
+      useFindAndModify: false,
+      returnDocument: 'after'
+    });
   }
 }

@@ -6,7 +6,7 @@ const router = express.Router();
 
 //Product List
 router.get('/',controller.list);
-router.delete('/:id', controller.removeProduct);
+router.post('/', controller.removeProduct);
 
 //Search and Filter
 router.get('/search', controller.search);

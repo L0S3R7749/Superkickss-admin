@@ -40,26 +40,33 @@
                     <th scope="col">Email</th>
                     <th scope="col">Phone number</th>
                     <th scope="col">Status</th>
-                    <th scope="col" class="table-header">Operator</th>
+                    <th scope="col" class="table-header">Actions</th>
                 </tr>
             </thead>
             <tbody class="table100-body">
                 <%for (let i = 0; i < admins.length; i++) { %>
                     <tr>
-    
-                        <td><a href='/admins/detail?id=<%=admins[i]._id%>'><%= admins[i].fullname%></a></td>
+                        <td><a href='/admins/detail/<%=admins[i]._id%>'><%= admins[i].fullname%></a></td>
                         <td><%= admins[i].username%></td>
                         <td><%= admins[i].userRight%></td>
                         <td><%= admins[i].email%></td>
                         <td><%= admins[i].phoneNumber%></td>
-                        <td>Status here</td>
+                        <td><%= (admins[i].isLock === true) ? 'LOCKED' : 'NOT LOCKED'%></td>
                         <td class="operator-buttons">
-                            <a href="">                            
+                            <a href='/admins/detail/<%=admins[i]._id%>'>                            
                                 <i class="fas fa-pen-square"></i>
                             </a>
-                            <a href="">
-                                <i class="fas fa-lock"></i>
-                            </a>
+                            <% if (!locals.curAdmin._id.equals(admins[i]._id)) { %>
+                                <% if (admins[i].isLock === true) { %>
+                                    <a href="#" id="account-actions" data-id="<%=admins[i]._id%>">
+                                        <i class="fas fa-unlock"></i>
+                                    </a>
+                                <% } else { %>
+                                    <a href="#" id="account-actions" data-id="<%=admins[i]._id%>">
+                                        <i class="fas fa-lock"></i>
+                                    </a>
+                                <% } %>
+                            <% } %>
                         </td>
                     </tr>
                 <% } %>

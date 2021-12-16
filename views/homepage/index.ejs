@@ -187,7 +187,7 @@
                         <div class="sidebar-profile-info">
                             <a href="javascript:void(0);" class="account-settings-link">
                                 <% if (locals.curAdmin) { %>
-                                    <p><a href="/users/userinfo?id=<%=locals.curAdmin._id%>"><%=locals.curAdmin.fullname%></a></p>
+                                    <p><a href="/users/userinfo/<%=locals.curAdmin._id%>"><%=locals.curAdmin.fullname%></a></p>
                                     <span><%=locals.curAdmin.email%><i class="material-icons float-right">arrow_drop_down</i></span>
                                 <% } else { %>
                                     <p>Admin</p>
