@@ -5,6 +5,7 @@ const controller = require('./usersController');
 
 //User List
 router.get('/', controller.get_users_list);
+router.post('/', controller.userAccountAction);
 
 //Search and Filter
 router.get('/search', controller.search);

@@ -80,5 +80,16 @@ module.exports = {
     } catch(err) {
       console.log(err);
     }
-  }
+  },
+
+  userAccountAction: async (req,res) => {
+    try {
+      const {id} = req.body;
+      const targetUser = await service.findTargetUser(id);
+      let updatedUser = await service.updateUser(id, {isLock: !(targetUser.isLock)});
+      res.status(200).send({message: 'Action on account successfully'});
+    } catch(err) {
+      console.log(err.message);
+    }
+  },
 }

@@ -52,14 +52,20 @@
                     <td><%= users[i].userRight%></td>
                     <td><%= users[i].email%></td>
                     <td><%= users[i].phoneNumber%></td>
-                    <td>Status here</td>
+                    <td><%= (users[i].isLock === true) ? 'LOCKED' : 'NOT LOCKED'%></td>
                     <td class="operator-buttons">
-                        <a href="">                            
+                        <a href='/users/detail/<%=users[i]._id%>'>                            
                             <i class="fas fa-pen-square"></i>
                         </a>
-                        <a href="">
-                            <i class="fas fa-lock"></i>
-                        </a>
+                        <% if (users[i].isLock === true) { %>
+                            <a class="account-actions" data-id=<%=users[i]._id%>>
+                                <i class="fas fa-unlock"></i>
+                            </a>
+                        <% } else { %>
+                            <a class="account-actions" data-id=<%=users[i]._id%>>
+                                <i class="fas fa-lock"></i>
+                            </a>
+                        <% } %>
                     </td>
                 </tr>
                 <% } %>
