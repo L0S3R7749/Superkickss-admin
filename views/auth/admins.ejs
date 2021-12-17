@@ -58,11 +58,11 @@
                             </a>
                             <% if (!locals.curAdmin._id.equals(admins[i]._id)) { %>
                                 <% if (admins[i].isLock === true) { %>
-                                    <a href="#" id="account-actions" data-id="<%=admins[i]._id%>">
+                                    <a class="account-actions" data-id=<%=admins[i]._id%>>
                                         <i class="fas fa-unlock"></i>
                                     </a>
                                 <% } else { %>
-                                    <a href="#" id="account-actions" data-id="<%=admins[i]._id%>">
+                                    <a class="account-actions" data-id=<%=admins[i]._id%>>
                                         <i class="fas fa-lock"></i>
                                     </a>
                                 <% } %>

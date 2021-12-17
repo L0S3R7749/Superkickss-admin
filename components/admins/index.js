@@ -3,6 +3,7 @@ const router = express.Router();
 const controller = require('./adminsController');
 
 router.get('/', controller.get_admins_list);
+router.post('/', controller.adminAccountAction);
 
 router.get('/search', controller.search);
 

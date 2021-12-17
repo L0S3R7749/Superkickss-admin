@@ -112,4 +112,14 @@ module.exports = {
       }
     },
 
+    adminAccountAction: async (req, res) => {
+      try {
+        const {id} = req.body;
+        const targetAdmin = await service.findTargetAdmin(id);
+        let updatedAdmin = await service.updateAdmin(id, {isLock: !(targetAdmin.isLock)});
+        res.status(200).send({message: 'Acction on account successfully!'});
+      } catch(err) {
+        console.log(err.message);
+      }
+    },
 }

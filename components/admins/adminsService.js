@@ -66,11 +66,4 @@ module.exports = {
       returnDocument: 'after'
     });
   },
-
-  accountActions: (id, option) => {
-    return User.findByIdAndUpdate(id, option, {
-      useFindAndModify: false,
-      returnDocument: 'after'
-    });
-  }
 }

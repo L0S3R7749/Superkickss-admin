@@ -35,9 +35,9 @@ module.exports = {
   },
 
   updateUser: (id, data) => {
-    return User.findById(id, data, {
+    return User.findByIdAndUpdate(id, data, {
       useFindAndModify: false,
       returnDocument: 'after'
     });
-  }
+  },
 }
