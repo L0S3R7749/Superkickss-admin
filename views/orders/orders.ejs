@@ -29,14 +29,13 @@
 
             <div class="col-12">
                 <h2 class="page-title">Order List</h2>
-                <!-- <a href="#" class="btn btn-text-secondary float-right">CREATE A NEW ORDER</a> -->
             </div>
         </div>
         <div class="row">
             <%- include('../partials/search')%>
-            <div class="col-md-5">
+            <!--div class="col-md-5">
                 <a href="#" class="btn btn-text-secondary float-right">CREATE A NEW ORDER</a>
-            </div>
+            </div-->
         </div>
     </div>
 
@@ -45,50 +44,54 @@
             <thead>
                 <tr>
                     <th scope="col">#ID</th>
+                    <th scope="col">Order_ID</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Address</th>
+                    <th scope="col">Fullname</th>
+                    <th scope="col">Shipping Address</th>
                     <th scope="col">Total</th>
                     <th scope="col">Created date</th>
                     <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody class="table100-body">
+                <% for (let i = 0; i < orders.length; i++) { %>
                 <tr>
-                    <td>1</td>
-                    <td>caohaisil</td>
-                    <td>290/26, Nơ Trang Long, P.12, Q.Bình Thạnh, TP.HCM</td>
-                    <td>300.000</td>
-                    <td>10/11/2021</td>
-                    <td >
-                        <span class="order-status order-shipping">
-                            Delivering
-                        </span>
+                    <td><%= i+1 %></td>
+                    <td>
+                        <a href="/orders/detail">
+                            <%= orders[i]._id%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href = '/users/detail/<%=orders[i].user_id._id%>''>
+                            <%= orders[i].user_id.username %>
+                        </a>
+                    </td>
+                    <td><%= orders[i].user_id.fullname %></td>
+                    <td><%= orders[i].shippingAddress %></td>
+                    <td><%= orders[i].totalPrice %></td>
+                    <td><%= orders[i].createdDate %></td>
+                    <td>
+                        <% if (orders[i].status === "in progress") { %>
+                            <span class="order-status order-cancel">
+                                In Progress
+                            </span>
+                        <% } else { %>
+                            <% if (orders[i].status === "shipping") { %>
+                                <span class="order-status order-shipping">
+                                    Shipping
+                                </span>
+                            <% } else { %>
+                                <span class="order-status order-done">
+                                    Completed
+                                </span>
+                            <% } %>
+                        <% } %>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>caohaisil</td>
-                    <td>290/26, Nơ Trang Long, P.12, Q.Bình Thạnh, TP.HCM</td>
-                    <td>300.000</td>
-                    <td>10/11/2021</td>
-                    <td>
-                        <span class="order-status order-cancel">
-                            Cancel
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>caohaisil</td>
-                    <td>290/26, Nơ Trang Long, P.12, Q.Bình Thạnh, TP.HCM</td>
-                    <td>300.000</td>
-                    <td>10/11/2021</td>
-                    <td>
-                        <span class="order-status order-done">
-                            Done
-                        </span>
-                    </td>
+                <% } %>
             </tbody>
         </table>
     </div>
+    <%- include('../partials/pagination')%>
 </body>
