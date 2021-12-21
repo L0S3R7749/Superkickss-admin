@@ -53,5 +53,12 @@ module.exports = {
                 }},
                 {$count: 'num_orders'}
             ]);
+    },
+
+    single_order: (id) => {
+        return Order
+            .findById(id)
+            .populate('user_id')
+            .populate('items.itemId');
     }
 };
