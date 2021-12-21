@@ -46,7 +46,13 @@ module.exports = {
 
     get_order_detail: async (req,res) => {
         try {
+            const targetOrder = await services.single_order(req.params.id);
 
+            res.render('./homepage/index',{
+                title: 'Detail',
+                body: '../orders/detail',
+                order: targetOrder
+            });
         } catch(err) {
             console.log(err.message);
         }
