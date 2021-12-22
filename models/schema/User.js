@@ -19,12 +19,10 @@ const userSchema = new mongoose.Schema({
     },
     phoneNumber: {
         type: String,
-    }, 
+    },
     addresses: [{
-        address: {
-            type: String,
-            required: true,
-        }
+        type: String,
+        required: true,
     }],
     userRight: {
         type: String,
@@ -32,7 +30,7 @@ const userSchema = new mongoose.Schema({
         enum: ['admin', 'user'],
         default: 'user',
     },
-    isLock:{
+    isLock: {
         type: Boolean,
         required: true,
         default: false,
