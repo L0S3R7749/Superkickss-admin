@@ -99,7 +99,7 @@ module.exports = {
           address
         } = req.body;
         let tempAddress = [];
-        tempAddress.push({address: address});
+        tempAddress.push(address);
         const dataUpdate = {
           fullname: fullname,
           addresses: tempAddress,
