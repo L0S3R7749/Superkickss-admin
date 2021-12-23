@@ -64,7 +64,23 @@ module.exports = {
   },
 
   edit_user: async (req, res) => {
-    res.send('Edit user page');
+    try {
+      const {
+        fullname,
+        address
+      } = req.body;
+      let tempAddress = [];
+      tempAddress.push(address);
+      const dataUpdate = {
+        fullname: fullname,
+        addresses: tempAddress
+      };
+      const updateUser = await service.updateUser(req.params.id, dataUpdate);
+      console.log(updateUser);
+      res.redirect(`/users/detail/${req.params.id}`);
+    } catch(err) {
+      console.log(err.message);
+    }
   },
 
   get_local_user_info: async (req, res) => {

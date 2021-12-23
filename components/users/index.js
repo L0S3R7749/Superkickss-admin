@@ -12,12 +12,9 @@ router.get('/search', controller.search);
 
 //User detail
 router.get('/detail/:id', controller.get_user_detail);
+router.post('/detail/:id', controller.edit_user)
 
 //Local user info
 router.get('/userinfo/:id',controller.get_local_user_info);
-
-//Update User
-router.get('/edit', controller.edit_user);
-
 
 module.exports = router;
