@@ -56,5 +56,27 @@ module.exports = {
         } catch(err) {
             console.log(err.message);
         }
+    },
+
+    update_status: async (req, res) => {
+        try {
+            const orderId = req.params.id;
+            const { newStatus } = req.body;
+            const currentStatus = await Order.findById(_id).status;
+
+            const statusUpdatedOrder = await services.update_status(orderId, currentStatus, newStatus);
+            
+            if (!statusUpdatedOrder) {
+                return res.json({
+                    message: `Can't set ${newStatus} state to this order !!!`
+                })
+            } 
+            res.json({
+                order: statusUpdatedOrder,
+                message: "Updated succesfully"
+            })
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 };

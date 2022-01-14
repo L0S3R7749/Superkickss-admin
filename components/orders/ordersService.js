@@ -60,5 +60,28 @@ module.exports = {
             .findById(id)
             .populate('user_id')
             .populate('items.itemId');
+    },
+
+    update_status: (_id, currentStatus, newStatus) => {
+        let updateStatus = '';        
+
+        if (currentStatus === 'in progress') {
+            if (newStatus === 'cancel' || newStatus === 'shipping') {
+                updateStatus = newStatus;
+            }
+        } else if (currentStatus === 'shipping') {
+            if (newStatus === 'cancel' || newStatus === 'in progress' || newStatus === 'complete') {
+                updateStatus = newStatus;
+            }
+        } else if (currentStatus === 'complete') {
+            if (newStatus === 'cancel') {
+                updateStatus === newStatus;
+            }
+        }
+        if (updateStatus !== '') {
+            return Order.findByIdAndUpdate(_id, {status: updateStatus});
+        } else {
+            return null;
+        }
     }
 };
