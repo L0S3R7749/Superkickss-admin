@@ -1,6 +1,6 @@
 var path = window.location.pathname;
 if (path.match('/orders/detail')) {
-    $('.update-status').on('click', function(e) {
+    $(document).on('click', '.update-status', function(e) {
         e.preventDefault();
         
         let status = $(this).attr('data-status');
@@ -12,7 +12,7 @@ if (path.match('/orders/detail')) {
             },
             success: function (data) {
                 console.log(data)
-                let { updatedStatus, message } = data.responseJSON;
+                let { updatedStatus, message } = data;
                 $('#alert-pane').html(`
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         ${message}
@@ -21,7 +21,7 @@ if (path.match('/orders/detail')) {
                         </button>
                     </div>`);
                 if (updatedStatus === "in progress") {
-                    $('.order-detail').html(`
+                    $('.order-header').html(`
                         <span class="order-status order-cancel bg-warning">
                             In Progress
                         </span>
@@ -31,7 +31,7 @@ if (path.match('/orders/detail')) {
                             <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>                        
                         </div>`);
                 } else if (updatedStatus === "shipping") {
-                    $('.order-detail').html(`
+                    $('.order-header').html(`
                         <span class="order-status order-shipping bg-primary">
                             Shipping
                         </span>
@@ -42,7 +42,7 @@ if (path.match('/orders/detail')) {
                             <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>
                         </div>`);
                 } else if (updatedStatus === "complete") {
-                    $('.order-detail').html(`
+                    $('.order-header').html(`
                         <span class="order-status order-done bg-success">
                             Completed
                         </span>
@@ -50,7 +50,7 @@ if (path.match('/orders/detail')) {
                 }
             },
             error: function (data) {
-                let { message } = data.responseJSON;
+                let { message } = data;
                 $('#alert-pane').html(`
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         ${message}

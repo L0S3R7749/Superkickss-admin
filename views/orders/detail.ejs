@@ -5,33 +5,36 @@
         <div class="row">
             <a>Back</a>
             <div class="order-detail">
-                <% if (order.status === "in progress") { %>
-                    <span class="order-status order-cancel bg-warning">
-                        In Progress
-                    </span>
-                    <hr>
-                    <div class="my-4">
-                        <span id="shipping" class="update-status btn btn-primary mx-2" data-status="shipping">Shipping <i class="fas fa-chevron-right"></i></span>
-                        <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>                        
-                    </div>
-                <% } else { %>
-                    <% if (order.status === "shipping") { %>
-                        <span class="order-status order-shipping bg-primary">
-                            Shipping
+                <div class="order-header">
+                    <% if (order.status === "in progress") { %>
+                        <span class="order-status order-cancel bg-warning">
+                            In Progress
                         </span>
                         <hr>
                         <div class="my-4">
-                            <span id="inprogress" class="update-status btn btn-light mx-2" data-status="in progress"><i class="fas fa-chevron-left"></i> In progress</span>
-                            <span id="completed" class="update-status btn btn-primary mx-2" data-status="completed">Completed <i class="fas fa-chevron-right"></i></span>
-                            <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>
+                            <span id="shipping" class="update-status btn btn-primary mx-2" data-status="shipping">Shipping <i class="fas fa-chevron-right"></i></span>
+                            <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>                        
                         </div>
                     <% } else { %>
-                        <span class="order-status order-done bg-success">
-                            Completed
-                        </span>
-                        <hr>
+                        <% if (order.status === "shipping") { %>
+                            <span class="order-status order-shipping bg-primary">
+                                Shipping
+                            </span>
+                            <hr>
+                            <div class="my-4">
+                                <span id="inprogress" class="update-status btn btn-light mx-2" data-status="in progress"><i class="fas fa-chevron-left"></i> In progress</span>
+                                <span id="completed" class="update-status btn btn-primary mx-2" data-status="completed">Completed <i class="fas fa-chevron-right"></i></span>
+                                <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>
+                            </div>
+                        <% } else { %>
+                            <span class="order-status order-done bg-success">
+                                Completed
+                            </span>
+                            <hr>
+                        <% } %>
                     <% } %>
-                <% } %>
+                </div>
+                
                 <h3 class="my-4">
                     Invoice
                 </h3>
