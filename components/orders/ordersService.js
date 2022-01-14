@@ -65,13 +65,12 @@ module.exports = {
     update_status: async (_id, newStatus) => {
         let updateStatus = '';        
         const { status } = await Order.findById(_id).select('status -_id');
-        console.log(status)
         if (status === 'in progress') {
             if (newStatus === 'cancel' || newStatus === 'shipping') {
                 updateStatus = newStatus;
             }
         } else if (status === 'shipping') {
-            if (newStatus === 'cancel' || newStatus === 'in progress' || newStatus === 'complete') {
+            if (newStatus === 'cancel' || newStatus === 'in progress' || newStatus === 'completed') {
                 updateStatus = newStatus;
             }
         }
