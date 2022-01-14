@@ -62,20 +62,17 @@ module.exports = {
             .populate('items.itemId');
     },
 
-    update_status: (_id, currentStatus, newStatus) => {
+    update_status: async (_id, newStatus) => {
         let updateStatus = '';        
-
-        if (currentStatus === 'in progress') {
+        const { status } = await Order.findById(_id).select('status -_id');
+        console.log(status)
+        if (status === 'in progress') {
             if (newStatus === 'cancel' || newStatus === 'shipping') {
                 updateStatus = newStatus;
             }
-        } else if (currentStatus === 'shipping') {
+        } else if (status === 'shipping') {
             if (newStatus === 'cancel' || newStatus === 'in progress' || newStatus === 'complete') {
                 updateStatus = newStatus;
-            }
-        } else if (currentStatus === 'complete') {
-            if (newStatus === 'cancel') {
-                updateStatus === newStatus;
             }
         }
         if (updateStatus !== '') {

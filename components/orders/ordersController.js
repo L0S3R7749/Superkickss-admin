@@ -62,18 +62,17 @@ module.exports = {
         try {
             const orderId = req.params.id;
             const { newStatus } = req.body;
-            const currentStatus = await Order.findById(_id).status;
 
-            const statusUpdatedOrder = await services.update_status(orderId, currentStatus, newStatus);
-            
+            const statusUpdatedOrder = await services.update_status(orderId, newStatus);
+            console.log(statusUpdatedOrder)
             if (!statusUpdatedOrder) {
-                return res.json({
+                return res.status(400).send({
                     message: `Can't set ${newStatus} state to this order !!!`
                 })
             } 
-            res.json({
-                order: statusUpdatedOrder,
-                message: "Updated succesfully"
+            res.status(200).send({
+                updatedStatus: newStatus,
+                message: `Updated to ${newStatus} succesfully !`
             })
         } catch (err) {
             console.log(err.message);

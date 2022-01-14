@@ -73,16 +73,16 @@
                     <td><%= orders[i].createdDate %></td>
                     <td>
                         <% if (orders[i].status === "in progress") { %>
-                            <span class="order-status order-cancel">
+                            <span class="order-status order-cancel bg-warning">
                                 In Progress
                             </span>
                         <% } else { %>
                             <% if (orders[i].status === "shipping") { %>
-                                <span class="order-status order-shipping">
+                                <span class="order-status order-shipping bg-primary">
                                     Shipping
                                 </span>
                             <% } else { %>
-                                <span class="order-status order-done">
+                                <span class="order-status order-done bg-success">
                                     Completed
                                 </span>
                             <% } %>
