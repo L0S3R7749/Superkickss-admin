@@ -62,7 +62,6 @@ module.exports = {
         try {
             const orderId = req.params.id;
             const { newStatus } = req.body;
-
             const statusUpdatedOrder = await services.update_status(orderId, newStatus);
             console.log(statusUpdatedOrder)
             if (!statusUpdatedOrder) {
