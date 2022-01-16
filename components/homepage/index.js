@@ -7,4 +7,6 @@ const controller = require('./homepageController');
 
 router.get('/', controller.home);
 
+router.get('/topten', controller.topten);
+
 module.exports = router;
