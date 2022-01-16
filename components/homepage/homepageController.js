@@ -16,3 +16,21 @@ module.exports.topten = async (req, res, next) => {
         })
     }
 }
+
+module.exports.revenue = async (req, res, next) => {
+    try {
+        let interval_string = ""
+        if (req.query.interval) {
+            console.log(req.query.interval)
+            interval_string = req.query.interval;
+        }
+        const revenue_by_interval = await services.revenue(interval_string);
+        res.status(200).send({
+            revenue_by_interval: revenue_by_interval
+        })
+    } catch (err) {
+        res.status(500).send({
+            message: err.message
+        })
+    }
+}

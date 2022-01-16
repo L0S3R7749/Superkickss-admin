@@ -16,6 +16,7 @@ if (document.querySelector("#top-ten-best-seller")) {
     })
 }
 
+
 function renderTopTenProducts(products) {
     let table = document.querySelector("#top-ten-table");
 
@@ -32,20 +33,22 @@ function renderTopTenProducts(products) {
     })
 }
 
-// function renderTopTenBestSeller() {
-//     let topTen = getTopTenBestSeller();
-//     let panel = document.querySelector("#top-ten-best-seller");
-//     panel.innerHTML += `
-//     `
-// }
 
-// async function getTopTenBestSeller() {
-//     let data = await fetch('/topten', {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json'
-//         }
-//     })
-//     return data;
-// }
+if (document.querySelector("#revenue-interval")) {
+    $(window).on("load", function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/revenue',
+            method: 'GET',
+            data: {
+                "interval": ""
+            },
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+    })
+}
