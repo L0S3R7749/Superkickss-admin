@@ -82,9 +82,15 @@
                                     Shipping
                                 </span>
                             <% } else { %>
-                                <span class="order-status order-done bg-success">
-                                    Completed
-                                </span>
+                                <% if (orders[i].status === "completed") { %>
+                                    <span class="order-status order-done bg-success">
+                                        Completed
+                                    </span>
+                                <% } else { %>
+                                    <span class="order-status order-cancel bg-danger">
+                                        Cancel
+                                    </span>
+                                <% } %>
                             <% } %>
                         <% } %>
                     </td>

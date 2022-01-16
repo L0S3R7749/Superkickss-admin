@@ -27,9 +27,15 @@
                                 <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>
                             </div>
                         <% } else { %>
-                            <span class="order-status order-done bg-success">
-                                Completed
-                            </span>
+                            <% if (order.status === "completed") { %>
+                                <span class="order-status order-done bg-success">
+                                    Completed
+                                </span>
+                            <% } else { %>
+                                <span class="order-status order-cancel bg-danger">
+                                    Cancel
+                                </span>
+                            <% } %>
                             <hr>
                         <% } %>
                     <% } %>
