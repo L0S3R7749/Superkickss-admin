@@ -41,7 +41,7 @@ if (path.match('/orders/detail')) {
                             <span id="completed" class="update-status btn btn-primary mx-2" data-status="completed">Completed <i class="fas fa-chevron-right"></i></span>
                             <span id="cancel" class="update-status btn btn-danger mx-2" data-status="cancel">Cancel</span>
                         </div>`);
-                } else if (updatedStatus === "complete") {
+                } else if (updatedStatus === "completed") {
                     $('.order-header').html(`
                         <span class="order-status order-done bg-success">
                             Completed
