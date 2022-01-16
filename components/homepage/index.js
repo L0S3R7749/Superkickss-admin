@@ -9,4 +9,6 @@ router.get('/', controller.home);
 
 router.get('/topten', controller.topten);
 
+router.get('/revenue', controller.revenue);
+
 module.exports = router;
