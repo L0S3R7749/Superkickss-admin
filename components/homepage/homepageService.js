@@ -36,7 +36,8 @@ module.exports = {
                 {$group: {
                     _id: { year: { $year: "$createdDate"}, month: { $month: "$createdDate"}, day: { $dayOfMonth: "$createdDate"} },
                     total_revenue: { $sum: "$totalPrice"}
-                }}
+                }},
+                {$sort: { _id: -1 }}
             ]
         } else if (interval_string === "week") {
             pipeline = [
@@ -44,7 +45,8 @@ module.exports = {
                 {$group: {
                     _id: { year: { $year: "$createdDate"}, week: { $week: "$createdDate"} },
                     total_revenue: { $sum: "$totalPrice"}
-                }}
+                }},
+                {$sort: { _id: -1 }}
             ]
         } else if (interval_string === "month") {
             pipeline = [
@@ -52,7 +54,8 @@ module.exports = {
                 {$group: {
                     _id: { year: { $year: "$createdDate"}, month: { $month: "$createdDate"} },
                     total_revenue: { $sum: "$totalPrice"}
-                }}
+                }},
+                {$sort: { _id: -1 }}
             ]
         } else if (interval_string === "quarter") {
             pipeline = [
@@ -63,16 +66,16 @@ module.exports = {
                     quarter: {
                         $cond: [
                             { $lte: [{ $month: "$createdDate" }, 3]},
-                            "first",
+                            1,
                             {
                                 $cond: [
                                     { $lte: [{ $month: "$createdDate" }, 6]},
-                                    "second",
+                                    2,
                                     {
                                         $cond: [
                                             { $lte: [{ $month: "$createdDate" }, 9]},
-                                            "third",
-                                            "fourth",
+                                            3,
+                                            4,
                                         ]
                                     }
                                 ]
@@ -80,15 +83,17 @@ module.exports = {
                         ]
                     }
                 }},
-                {$group: {_id: { year: { $year: "$createdDate" }, quarter: "$quarter" }, total_revenue: { $sum: "$totalPrice" }}}
+                {$group: {_id: { year: { $year: "$createdDate" }, quarter: "$quarter" }, total_revenue: { $sum: "$totalPrice" }}},
+                {$sort: { _id: -1 }}
             ]
         } else if (interval_string === "year") {
-            let pipeline = [
+            pipeline = [
                 {$match: { status: "completed" }}, 
                 {$group: {
                     _id: { year: { $year: "$createdDate"} },
                     total_revenue: { $sum: "$totalPrice"}
-                }}
+                }},
+                {$sort: { _id: -1 }}
             ]
         } else {
             pipeline = [
@@ -96,7 +101,8 @@ module.exports = {
                 {$group: {
                     _id: { year: { $year: "$createdDate"}, month: { $month: "$createdDate"} },
                     total_revenue: { $sum: "$totalPrice"}
-                }}
+                }},
+                {$sort: { _id: -1 }}
             ]
             console.log(pipeline)
         }
