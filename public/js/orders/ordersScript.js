@@ -11,7 +11,6 @@ if (path.match('/orders/detail')) {
                 newStatus: status
             },
             success: function (data) {
-                console.log(data)
                 let { updatedStatus, message } = data;
                 $('#alert-pane').html(`
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -45,6 +44,12 @@ if (path.match('/orders/detail')) {
                     $('.order-header').html(`
                         <span class="order-status order-done bg-success">
                             Completed
+                        </span>
+                        <hr>`);
+                } else {
+                    $('.order-header').html(`
+                        <span class="order-status order-cancel bg-danger">
+                            Cancel
                         </span>
                         <hr>`);
                 }
