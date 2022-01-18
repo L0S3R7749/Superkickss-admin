@@ -98,11 +98,9 @@ module.exports = {
           fullname,
           address
         } = req.body;
-        let tempAddress = [];
-        tempAddress.push(address);
         const dataUpdate = {
           fullname: fullname,
-          addresses: tempAddress,
+          addresses: address,
         };
         const updatedAdmin = await service.updateAdmin(req.params.id, dataUpdate);
         console.log(updatedAdmin);

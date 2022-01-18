@@ -69,11 +69,9 @@ module.exports = {
         fullname,
         address
       } = req.body;
-      let tempAddress = [];
-      tempAddress.push(address);
       const dataUpdate = {
         fullname: fullname,
-        addresses: tempAddress
+        addresses: address
       };
       const updateUser = await service.updateUser(req.params.id, dataUpdate);
       console.log(updateUser);
@@ -95,6 +93,24 @@ module.exports = {
       });
     } catch(err) {
       console.log(err);
+    }
+  },
+
+  update_local_user_info: async (req,res) => {
+    try {
+      const {
+        fullname,
+        address
+      } = req.body;
+      const dataUpdate = {
+        fullname: fullname,
+        addresses: address
+      };
+      const updateUser = await service.updateUser(req.params.id, dataUpdate);
+      console.log(updateUser);
+      res.redirect(`/users/userinfo/${req.params.id}`);
+    } catch(err) {
+      console.log(err.message);
     }
   },
 

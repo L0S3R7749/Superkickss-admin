@@ -16,5 +16,6 @@ router.post('/detail/:id', controller.edit_user)
 
 //Local user info
 router.get('/userinfo/:id',controller.get_local_user_info);
+router.post('/userinfo/:id',controller.update_local_user_info);
 
 module.exports = router;
