@@ -13,5 +13,8 @@ router.post('/detail/:id', controller.edit_admin);
 router.get('/create', controller.get_admin_addPage);
 router.post('/create', controller.add_admin);
 
+/*Change password */
+router.get('/change-password', controller.get_changepassword);
+
 
 module.exports = router;

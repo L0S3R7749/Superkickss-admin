@@ -120,4 +120,8 @@ module.exports = {
         console.log(err.message);
       }
     },
+
+    get_changepassword: (req,res)=>{
+      res.render('./auth/changepassword', {title: 'Change password'});
+    }
 }
