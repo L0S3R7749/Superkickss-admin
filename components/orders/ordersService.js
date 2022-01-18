@@ -4,14 +4,17 @@ const Order = require("../../models/schema/Order");
 module.exports = {
     list_orders: (page=1,perPage=5) => {
         return Order
-            .find()
-            .skip((perPage * page) - perPage)
-            .limit(perPage)
-            .populate('user_id')
-    },
-
-    countAllOrders: () => {
-        return Order.count();
+            .aggregate([
+                {$lookup: {
+                    from: 'users',
+                    localField: 'user_id',
+                    foreignField: '_id',
+                    as: 'user_id',
+                }},
+                {$unwind: '$user_id'},
+                {$skip: (perPage * page) - perPage},
+                {$limit: 5}
+            ]);
     },
 
     search_list: (searchString, page=1, perPage=5) => {
