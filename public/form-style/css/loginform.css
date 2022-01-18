@@ -89,3 +89,10 @@ button:hover::before {
     width: 50%;
     align-self: center;
 }
+
+.error{
+    border: 1px solid #f44336;
+    color: #f44336;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+  }

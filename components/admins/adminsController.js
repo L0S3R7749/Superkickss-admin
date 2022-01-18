@@ -1,5 +1,6 @@
 const User = require('../../models/schema/User');
 const service = require('./adminsService');
+const bcrypt = require('bcrypt');
 //this router is temporary
 module.exports = {
     get_admins_list: async (req,res)=>{
@@ -122,6 +123,38 @@ module.exports = {
     },
 
     get_changepassword: (req,res)=>{
-      res.render('./auth/changepassword', {title: 'Change password'});
+      res.render('./auth/changepassword', {title: 'Change password', message: req.flash('error')});
+    },
+
+    update_password: async (req,res,next) => {
+      try {
+        const account = res.locals.curAdmin;
+        const currentPassword = req.body.currentpassword;
+        const newPassword = req.body.newpassword;
+        const confirmPassword = req.body.confirmpassword;
+        const regex = /[.\-\:><= *+?^${}()|[\]\\]/g;
+        const hashPassword = bcrypt.hashSync(newPassword, 10);
+        if (currentPassword.length == 0 || newPassword.length == 0 || confirmPassword.length == 0) {
+            req.flash('error', 'Please fill all field.');
+            res.redirect('/admins/change-password');
+        } else if (!bcrypt.compareSync(currentPassword, account.password)) {
+            req.flash('error', 'Your current password not correct');
+            res.redirect('/admins/change-password');
+        } else if (newPassword !== confirmPassword) {
+            req.flash('error', 'Your confirm password not correct');
+            res.redirect('/admins/change-password');
+        } else if (newPassword.length < 6 || newPassword.length > 16) {
+            req.flash('error', 'Your password must have at least 6 characters or no more than 16 characters');
+            res.redirect('/admins/change-password');
+        } else if (newPassword.match(regex)) {
+            req.flash('error', 'Your password must not have special characters');
+            res.redirect('/admins/change-password');
+        } else {
+            await service.changePassword(account._id, hashPassword);
+            res.redirect('/');
+        }
+      } catch (err) {
+        next(err);
+      }
     }
 }

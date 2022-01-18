@@ -66,4 +66,12 @@ module.exports = {
       returnDocument: 'after'
     });
   },
+
+  changePassword: (id, password) => {
+    return User.findByIdAndUpdate(id, {
+        $set: {
+            password: password
+        }
+      });
+  }
 }

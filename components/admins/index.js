@@ -15,6 +15,7 @@ router.post('/create', controller.add_admin);
 
 /*Change password */
 router.get('/change-password', controller.get_changepassword);
+router.post('/change-password', controller.update_password);
 
 
 module.exports = router;
