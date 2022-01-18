@@ -35,13 +35,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: false,
     },
-    image: {
-        url: {
-            type: String
-        },
-        cloudinary_id: {
-            type: String
-        }
+    avatar: {
+        type: String,
+        required: true,
+        default: 'https://res.cloudinary.com/l3soer/image/upload/v1641452386/useravatarpng_bszyns.png'
     }
 });
 
