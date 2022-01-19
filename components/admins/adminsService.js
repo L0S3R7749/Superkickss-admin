@@ -46,15 +46,14 @@ module.exports = {
   },
 
   addAdmin: (reqBody) => {
-    let tempAddress = [];
-    tempAddress.push({address: reqBody.address});
+    console.log(reqBody);
     const newAdmin = new User({
       fullname: reqBody.fullname,
       username: reqBody.username,
       password: bcrypt.hashSync(reqBody.username,10),
       email: reqBody.email,
       phoneNumber: reqBody.phone,
-      addresses: tempAddress,
+      addresses: reqBody.address,
       userRight: 'admin',
     });
     return newAdmin.save();
